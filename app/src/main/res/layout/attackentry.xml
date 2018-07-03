@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:focusable="true"
+	android:clickable="true"
+	android:id="@+id/entryrelativelayout">
+
+	<TextView
+		android:id="@+id/attackname"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentStart="true"
+		android:layout_alignParentTop="true"
+		android:layout_marginLeft="17dp"
+		android:layout_marginStart="17dp"
+		android:layout_marginTop="13dp"
+		android:text="Attack Name"
+		android:textSize="18dp"/>
+
+	<TextView
+		android:id="@+id/attackbasedon"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignLeft="@+id/attackname"
+		android:layout_alignStart="@+id/attackname"
+		android:layout_below="@+id/attackname"
+		android:text="attack on str"
+		android:layout_marginBottom="5dp"/>
+
+	<TextView
+		android:id="@+id/damagebasedon"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignEnd="@+id/critical"
+		android:layout_alignRight="@+id/critical"
+		android:text="damage on str"
+		android:layout_marginTop="18dp"/>
+
+	<TextView
+		android:id="@+id/critical"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="crit"
+		android:layout_centerVertical="true"
+		android:layout_alignParentRight="true"
+		android:layout_alignParentEnd="true"
+		android:layout_alignBottom="@id/attackbasedon"
+		android:layout_marginRight="25dp"/>
+
+</RelativeLayout>
+

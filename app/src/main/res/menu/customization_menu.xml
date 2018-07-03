@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <item
+        android:title="Get combat stats"
+        android:id="@+id/custMenuGetStats"/>
+    <item
+        android:title="Set attacks"
+        android:id="@+id/custMenuSetAttacks"/>
+     <item       
+        android:title="Save customization as default"
+        android:id="@+id/custMenuSaveAsDefault"/>
+    <item
+        android:title="Restore default customization"
+        android:id="@+id/custMenuRestoreDefaults"/>
+    <item
+        android:title="Change base build info"
+        android:id="@+id/custMenuChangeInfo"/>
+    <item
+        android:title="Help"
+        android:id="@+id/custMenuHelp"/>
+    
+    
+</menu>

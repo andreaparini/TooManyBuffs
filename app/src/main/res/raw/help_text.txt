@@ -1,0 +1,3 @@
+Hello I am the text file and I show help to everyone. 
+This is the second line.
+50 lines here

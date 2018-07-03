@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+
+	<include
+		android:id="@+id/mainToolbar"
+		layout="@layout/main_toolbar"
+		android:layout_width="match_parent"/>
+
+	<ScrollView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp">
+
+				<TextView
+					android:layout_width="150dp"
+					android:layout_height="wrap_content"
+					android:text="Name"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:gravity="top"
+					android:layout_marginLeft="10dp"/>
+
+				<EditText
+					android:layout_width="match_parent"
+					android:inputType="textPersonName"
+					android:layout_height="wrap_content"
+					android:ems="10"
+					android:id="@+id/addattackName"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:textSize="17dp"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp">
+
+				<TextView
+					android:layout_width="175dp"
+					android:layout_height="wrap_content"
+					android:text="Base Damage"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:gravity="center_vertical"
+					android:layout_marginLeft="10dp"/>
+
+				<Spinner
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/addattackBaseDamageSpinner"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp">
+
+				<TextView
+					android:layout_width="175dp"
+					android:layout_height="wrap_content"
+					android:text="Enhancement bonus"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:gravity="center_vertical"
+					android:layout_marginLeft="10dp"/>
+
+				<Spinner
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/addattackWeaponEnhancementSpinner"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp">
+
+				<TextView
+					android:layout_width="175dp"
+					android:layout_height="wrap_content"
+					android:text="Critical"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_marginLeft="10dp"/>
+
+				<Spinner
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/addattackCriticalSpinner"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp">
+
+				<TextView
+					android:layout_width="175dp"
+					android:layout_height="wrap_content"
+					android:text="Bonus dice damage"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_marginLeft="10dp"/>
+
+				<Spinner
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/addattackBonusDiceSpinner"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp">
+
+				<TextView
+					android:layout_width="175dp"
+					android:layout_height="wrap_content"
+					android:text="Bonus dice damage"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_marginLeft="10dp"/>
+
+				<Spinner
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/addattackBonusDiceSpinner2"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp">
+
+				<TextView
+					android:layout_width="175dp"
+					android:layout_height="wrap_content"
+					android:text="Attack based on"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_marginLeft="10dp"/>
+
+				<Spinner
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/addattackAttackBasedOnSpinner"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp">
+
+				<TextView
+					android:layout_width="175dp"
+					android:layout_height="wrap_content"
+					android:text="Damage based on"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_marginLeft="10dp"/>
+
+				<Spinner
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/addattackDamageBasedOnSpinner"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp">
+
+				<TextView
+					android:layout_width="175dp"
+					android:layout_height="wrap_content"
+					android:text="Iterative Attacks"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_marginLeft="10dp"/>
+
+				<Spinner
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/addattackIterativeAttacksSpinner"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp">
+
+				<TextView
+					android:layout_width="175dp"
+					android:layout_height="wrap_content"
+					android:text="Two Weapon Fighting"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_marginLeft="10dp"/>
+
+				<Spinner
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/addattackTWFSpinner"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp">
+
+				<TextView
+					android:layout_width="175dp"
+					android:layout_height="wrap_content"
+					android:text="Custom bonus attack"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_marginLeft="10dp"/>
+
+				<Spinner
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/addattackCustomAttackBonusSpinner"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dp">
+
+				<TextView
+					android:layout_width="175dp"
+					android:layout_height="match_parent"
+					android:text="Custom bonus damage"
+					android:textAppearance="?android:attr/textAppearanceMedium"
+					android:layout_marginLeft="10dp"/>
+
+				<Spinner
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/addattackCustomDamageBonusSpinner"/>
+
+			</LinearLayout>
+
+			<Button
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="Add"
+				style="?android:attr/buttonBarButtonStyle"
+				android:padding="25dp"
+				android:onClick="onAddAttackButtonClick"
+				android:layout_marginTop="4dp"
+				android:id="@+id/addattackCreateAttackButton"/>
+
+		</LinearLayout>
+
+	</ScrollView>
+
+</LinearLayout>
+

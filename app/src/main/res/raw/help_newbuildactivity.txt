@@ -1,0 +1,6 @@
+In this window you can create a new character build, that will be saved in memory. You can specify your character's name, class and level.
+You need to enter your character's strength, dexterity and constitution WITHOUT any sort of temporary modification (such as a belt of constitution). Just enter your character's base stats, modified ONLY by racial and level adjustments.
+Insert your character's hit points MODIFIED by your base constitution (the one you entered above) but not by anything else.
+
+For instance, my level 8 barbarian has a constitution score of 16, he is a dwarf (so he gets a racial +2), and i have put 2 points in constitution at levels 4 and 8. He also has a belt of might constitution +2. I must insert 20 in the constitution score. 
+I must insert the hit points he has only with constitution 20. I will insert the +2 to constitution as a enhancement bonus later.

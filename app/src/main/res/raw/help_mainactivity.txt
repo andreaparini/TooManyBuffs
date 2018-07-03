@@ -1,0 +1,6 @@
+Hey guys, welcome to TooManyBuffs :)
+TooManyBuffs is an application designed to help you in getting the numbers you need during your Pathfinder sessions.
+It will help you find your to-hit roll, your damage bonus to your attacks and your armor class.
+To start using the app, just tap on New Build, where you will need to insert your character information, like your character's name, class, level and statistics.
+You can retrieve your saved builds from the Load/Manage Builds button. More specific help can be retrieved directly on the specific windows.
+Enjoy :D

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.andreap.toomanybuffs" >
+
+    <uses-sdk android:minSdkVersion="14"
+        android:targetSdkVersion="22" />
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:theme="@style/MyTheme"
+		>
+		
+		<!-- Main activity, Launch -->
+        <activity
+            android:name=".MainActivity"
+            android:label="Too Many Buffs" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+		
+		<!-- Help activity, called from Help button
+			from menu of main activity -->
+		<activity
+			android:name=".HelpActivity"
+            android:label="Help" >
+		</activity>
+		
+        <!-- New Build activity, called from new build button,
+            allows the user to create a new character build -->
+        <activity
+              android:name=".NewBuildActivity"
+              android:label="Create new build">
+        </activity>
+        
+        <!-- Load Builds activity, called from load builds button,
+        allows the user to load a character build amd delete them-->
+        <activity
+            android:name=".LoadBuildsActivity"
+            android:label="Load/manage builds">
+        </activity>
+             
+        <!-- -->
+        <activity
+            android:name=".CustomizationActivity"
+            android:label="Set Buffs">
+        </activity>
+        
+        <!-- -->
+        <activity
+            android:name=".ChangeInfoActivity"
+            android:label="Update Build Information">
+        </activity>
+        
+        <!-- -->
+        <activity
+            android:name=".SetAttacksActivity"
+            android:label="Set Melee/Ranged Attacks">
+        </activity>
+        
+        <!-- -->
+        <activity
+            android:name=".AddAttackActivity"
+            android:label="Set Attack Data">
+        </activity>
+        
+        <!-- -->
+        <activity
+            android:name=".ModifyAttackActivity"
+            android:label="Modify Attack Data">
+        </activity>
+        
+        <!-- -->
+        <activity
+            android:name=".CombatActivity"
+            android:label="Your Combat Stats">
+        </activity>
+        
+        <!-- -->
+        <activity
+            android:name=".ManageBuffsActivity"
+            android:label="Add/Manage Buffs">
+        </activity>
+        
+        
+    </application>
+
+</manifest>

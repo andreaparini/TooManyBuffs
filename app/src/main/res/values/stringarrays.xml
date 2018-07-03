@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+    
+<resources>
+    <string-array name="basedamage">
+        <item>1d2</item>
+        <item>1d3</item>
+        <item>1d4</item>
+        <item>1d6</item>
+        <item>1d8</item>
+        <item>1d10</item>
+        <item>1d12</item>
+        <item>2d4</item>
+        <item>2d6</item>
+        <item>2d8</item>
+        <item>2d10</item>
+        <item>2d12</item>
+        <item>3d4</item>
+        <item>3d6</item>
+        <item>3d8</item>
+        <item>3d10</item>
+        <item>3d12</item>
+    </string-array>
+    <string-array name="bonusdicedamage">
+        <item></item>
+        <item>1d2</item>
+        <item>1d3</item>
+        <item>1d4</item>
+        <item>1d6</item>
+        <item>1d8</item>
+        <item>1d10</item>
+        <item>1d12</item>
+        <item>2d4</item>
+        <item>2d6</item>
+        <item>2d8</item>
+        <item>2d10</item>
+        <item>2d12</item>
+        <item>3d4</item>
+        <item>3d6</item>
+        <item>3d8</item>
+        <item>3d10</item>
+        <item>3d12</item>
+        <item>4d6</item>
+        <item>5d6</item>
+        <item>6d6</item>
+    </string-array>
+    
+    <string-array name="critical">
+        <item>20/x2</item>
+        <item>19-20/×2</item>
+        <item>18-20/×2</item>
+        <item>17-20/x2</item>
+        <item>15-20/×2</item>
+        <item>20/×3</item>
+        <item>19-20/×3</item>
+        <item>18-20/x3</item>
+        <item>17-20/x3</item>
+        <item>20/x4</item>
+        <item>19-20/x4</item>
+    </string-array>
+    
+    <string-array name="attacktype">
+        <item>Strength</item>
+        <item>Dexterity</item>
+        <item>Constitution</item>
+    </string-array>
+    
+    <string-array name="damagetype">
+        <item>Strength</item>
+        <item>0.5x Strength</item>
+        <item>1.5x Strength</item>
+        <item>2x Strength</item>
+        <item>0.5x Dexterity</item>
+        <item>Dexterity</item>
+        <item>1.5x Dexterity</item>
+        <item>Constitution</item>
+        <item>None</item>
+    </string-array>
+    
+    <string-array name="iterativeattacks">
+        <item>None</item>
+        <item>2 (0 / -5)</item>
+        <item>2 (0 / 0)</item>
+        <item>3 (0 / -5 / -10)</item>
+        <item>3 (0 / 0 / -5)</item>
+        <item>3 (0 / 0 / 0)</item>
+        <item>4 (0 / -5 / -10 / -15)</item>
+        <item>4 (0 / 0 / -5 / -10)</item>
+        <item>4 (0 / 0 / -5 / -5)</item>
+        <item>5 (0 / 0 / -5 / -10 / -15)</item>
+        <item>5 (0 / 0 / -5 / -5 / -10)</item>
+        <item>5 (0 / 0 / 0 / -5 / -10)</item>
+        <item>6 (0 / 0 / -5 / -5 / -10 / -10)</item>
+        <item>6 (0 / 0 / 0 / -5 / -10 / -15)</item>
+        <item>7 (0 / 0 / -5 / -5 / -10 / -10 / -15)</item>       
+    </string-array>
+    
+    <string-array name="twoweaponfighting">
+        <item>No</item>
+        <item>Main Hand: normal penalties (-6)</item>
+        <item>Main Hand: off-hand is light (-4)</item>
+        <item>Main Hand: TWF feat (-4)</item>
+        <item>Main Hand: TWF feat + off-hand is light (-2)</item>
+        <item>Off Hand: normal penalties (-10)</item>
+        <item>Off Hand: off-hand is light (-8)</item>
+        <item>Off Hand: TWF feat (-4)</item>
+        <item>Off Hand: TWF feat + off-hand is light (-2)</item>
+    </string-array>
+    
+    <string-array name="numbers15">
+        <item>-15</item>
+        <item>-14</item>
+        <item>-13</item>
+        <item>-12</item>
+        <item>-11</item>
+        <item>-10</item>
+        <item>-9</item>
+        <item>-8</item>
+        <item>-7</item>
+        <item>-6</item>
+        <item>-5</item>
+        <item>-4</item>
+        <item>-3</item>
+        <item>-2</item>
+        <item>-1</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        
+    </string-array>
+    
+    <string-array name="dexmax">
+        
+        <item>No max dex</item>
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>  
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>  
+
+    </string-array>
+    
+    <string-array name="weaponenhancement">
+       
+        <item>0</item>
+        <item>Masterwork</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>      
+
+    </string-array>
+</resources>

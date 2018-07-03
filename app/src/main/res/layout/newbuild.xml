@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
+
+	<include
+		android:id="@+id/mainToolbar"
+		layout="@layout/main_toolbar"
+		android:layout_width="match_parent"/>
+
+	<ScrollView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content">
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp">
+
+				<TextView
+					android:layout_width="100dp"
+					android:layout_height="wrap_content"
+					android:text="Name"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:gravity="top"
+					android:layout_marginLeft="10dp"/>
+
+				<EditText
+					android:layout_width="match_parent"
+					android:inputType="textPersonName"
+					android:layout_height="wrap_content"
+					android:ems="10"
+					android:id="@+id/newbuildName"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp">
+
+				<TextView
+					android:layout_width="100dp"
+					android:layout_height="wrap_content"
+					android:text="Class"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:gravity="center_vertical"
+					android:layout_marginLeft="10dp"/>
+
+				<EditText
+					android:layout_width="match_parent"
+					android:inputType="textPersonName"
+					android:layout_height="wrap_content"
+					android:ems="10"
+					android:id="@+id/newbuildClass"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp">
+
+				<TextView
+					android:layout_width="200dp"
+					android:layout_height="wrap_content"
+					android:text="Level"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:layout_marginLeft="10dp"/>
+
+				<EditText
+					android:layout_width="60dp"
+					android:inputType="number"
+					android:layout_height="wrap_content"
+					android:ems="10"
+					android:id="@+id/newbuildLevel"
+					android:gravity="center"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp">
+
+				<TextView
+					android:layout_width="200dp"
+					android:layout_height="wrap_content"
+					android:text="Base Attack Bonus"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:layout_marginLeft="10dp"/>
+
+				<EditText
+					android:layout_width="60dp"
+					android:inputType="number"
+					android:layout_height="wrap_content"
+					android:ems="10"
+					android:id="@+id/newbuildBab"
+					android:gravity="center"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp">
+
+				<TextView
+					android:layout_width="200dp"
+					android:layout_height="wrap_content"
+					android:text="Strength"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:layout_marginLeft="10dp"/>
+
+				<EditText
+					android:layout_width="60dp"
+					android:inputType="number"
+					android:layout_height="wrap_content"
+					android:ems="10"
+					android:id="@+id/newbuildStrength"
+					android:gravity="center"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp">
+
+				<TextView
+					android:layout_width="200dp"
+					android:layout_height="wrap_content"
+					android:text="Dexterity"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:layout_marginLeft="10dp"/>
+
+				<EditText
+					android:layout_width="60dp"
+					android:inputType="number"
+					android:layout_height="wrap_content"
+					android:ems="10"
+					android:id="@+id/newbuildDexterity"
+					android:gravity="center"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp">
+
+				<TextView
+					android:layout_width="200dp"
+					android:layout_height="wrap_content"
+					android:text="Constitution"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:layout_marginLeft="10dp"/>
+
+				<EditText
+					android:layout_width="60dp"
+					android:inputType="number"
+					android:layout_height="wrap_content"
+					android:ems="10"
+					android:id="@+id/newbuildConstitution"
+					android:gravity="center"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dp">
+
+				<TextView
+					android:layout_width="200dp"
+					android:layout_height="wrap_content"
+					android:text="Base Hit Points"
+					android:textAppearance="?android:attr/textAppearanceLarge"
+					android:layout_marginLeft="10dp"/>
+
+				<EditText
+					android:layout_width="60dp"
+					android:inputType="number"
+					android:layout_height="wrap_content"
+					android:ems="10"
+					android:id="@+id/newbuildBaseHP"
+					android:gravity="center"/>
+
+			</LinearLayout>
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="Do not use a name which is already used for another build. Insert base stats with only racial bonuses and level advancement. Insert your HP without any temporary effect. Open help for more info."
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:gravity="center_horizontal"/>
+
+			<Button
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="Create"
+				style="?android:attr/buttonBarButtonStyle"
+				android:padding="25dp"
+				android:onClick="onCreateBuildButtonClick"/>
+
+		</LinearLayout>
+
+	</ScrollView>
+
+</LinearLayout>
+
