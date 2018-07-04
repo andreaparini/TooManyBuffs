@@ -572,6 +572,407 @@
 					android:src="@drawable/arrowdown"
 					android:layout_gravity="right"
 					android:gravity="right"
+					android:id="@+id/customizationImageView7"/>
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:id="@+id/customIntlTextView"
+					android:text="Intelligence Modifiers"
+					android:textSize="19sp"
+					android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="vertical"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/customIntlToShow"
+				android:visibility="visible">
+
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp">
+
+					<TextView
+						android:layout_width="200dp"
+						android:layout_height="wrap_content"
+						android:text="Enhancement bonus"
+						android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+					<Spinner
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/customIntlEnhancement"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp">
+
+					<TextView
+						android:layout_width="200dp"
+						android:layout_height="wrap_content"
+						android:text="Morale bonus"
+						android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+					<Spinner
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+		    			android:id="@+id/customIntlMorale"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:gravity="center"/>
+
+				</LinearLayout>
+
+
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp">
+
+					<TextView
+						android:layout_width="200dp"
+						android:layout_height="wrap_content"
+						android:text="Alchemical bonus"
+						android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+					<Spinner
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/customIntlAlchemical"
+						android:gravity="center"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp">
+
+					<TextView
+						android:layout_width="200dp"
+						android:layout_height="wrap_content"
+						android:text="Inherent bonus"
+						android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+					<Spinner
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/customIntlInherent"
+						android:gravity="center"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp">
+
+					<TextView
+						android:layout_width="200dp"
+						android:layout_height="wrap_content"
+						android:text="Other bonus"
+						android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+					<Spinner
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/customIntlOther"
+						android:gravity="center"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="7dp">
+
+				<ImageView
+					android:layout_width="23dp"
+					android:layout_height="23dp"
+					android:src="@drawable/arrowdown"
+					android:layout_gravity="right"
+					android:gravity="right"
+					android:id="@+id/customizationImageView8"/>
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:id="@+id/customWisTextView"
+					android:text="Wisdom Modifiers"
+					android:textSize="19sp"
+					android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="vertical"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/customWisToShow"
+				android:visibility="visible">
+
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp">
+
+					<TextView
+						android:layout_width="200dp"
+						android:layout_height="wrap_content"
+						android:text="Enhancement bonus"
+						android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+					<Spinner
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/customWisEnhancement"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp">
+
+					<TextView
+						android:layout_width="200dp"
+						android:layout_height="wrap_content"
+						android:text="Morale bonus"
+						android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+					<Spinner
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/customWisMorale"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:gravity="center"/>
+
+				</LinearLayout>			
+
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp">
+
+					<TextView
+						android:layout_width="200dp"
+						android:layout_height="wrap_content"
+						android:text="Alchemical bonus"
+						android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+					<Spinner
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/customWisAlchemical"
+						android:gravity="center"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp">
+
+					<TextView
+						android:layout_width="200dp"
+						android:layout_height="wrap_content"
+						android:text="Inherent bonus"
+						android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+					<Spinner
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/customWisInherent"
+						android:gravity="center"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp">
+
+					<TextView
+						android:layout_width="200dp"
+						android:layout_height="wrap_content"
+						android:text="Other bonus"
+						android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+					<Spinner
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/customWisOther"
+						android:gravity="center"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="7dp">
+
+				<ImageView
+					android:layout_width="23dp"
+					android:layout_height="23dp"
+					android:src="@drawable/arrowdown"
+					android:layout_gravity="right"
+					android:gravity="right"
+					android:id="@+id/customizationImageView9"/>
+
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:id="@+id/customChaTextView"
+					android:text="Charisma Modifiers"
+					android:textSize="19sp"
+					android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="vertical"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/customChaToShow"
+				android:visibility="visible">
+
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp">
+
+					<TextView
+						android:layout_width="200dp"
+						android:layout_height="wrap_content"
+						android:text="Enhancement bonus"
+						android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+					<Spinner
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/customChaEnhancement"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp">
+
+					<TextView
+						android:layout_width="200dp"
+						android:layout_height="wrap_content"
+						android:text="Morale bonus"
+						android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+					<Spinner
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/customChaMorale"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:gravity="center"/>
+
+				</LinearLayout>
+			
+
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp">
+
+					<TextView
+						android:layout_width="200dp"
+						android:layout_height="wrap_content"
+						android:text="Alchemical bonus"
+						android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+					<Spinner
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/customChaAlchemical"
+						android:gravity="center"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp">
+
+					<TextView
+						android:layout_width="200dp"
+						android:layout_height="wrap_content"
+						android:text="Inherent bonus"
+						android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+					<Spinner
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/customChaInherent"
+						android:gravity="center"/>
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp">
+
+					<TextView
+						android:layout_width="200dp"
+						android:layout_height="wrap_content"
+						android:text="Other bonus"
+						android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+					<Spinner
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/customChaOther"
+						android:gravity="center"/>
+
+				</LinearLayout>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="7dp">
+
+				<ImageView
+					android:layout_width="23dp"
+					android:layout_height="23dp"
+					android:src="@drawable/arrowdown"
+					android:layout_gravity="right"
+					android:gravity="right"
 					android:id="@+id/customizationImageView4"/>
 
 				<TextView
@@ -629,25 +1030,25 @@
 						android:id="@+id/customToHitLuck"
 						android:gravity="center"/>
 
-				</LinearLayout>			
-                
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
+				</LinearLayout>
 
-                    <TextView
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:text="Size adjustment"
-                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp">
 
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/customToHitSize"
-                        android:gravity="center"/>
+					<TextView
+						android:layout_width="200dp"
+						android:layout_height="wrap_content"
+						android:text="Size adjustment"
+						android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+					<Spinner
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/customToHitSize"
+						android:gravity="center"/>
 
 				</LinearLayout>
 
@@ -1016,24 +1417,24 @@
 						android:gravity="center"/>
 
 				</LinearLayout>
-                
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
 
-                    <TextView
-                        android:layout_width="200dp"
-                        android:layout_height="wrap_content"
-                        android:text="Size adjustment"
-                        android:textAppearance="?android:attr/textAppearanceMedium"/>
+				<LinearLayout
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="8dp">
 
-                    <Spinner
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:id="@+id/customAcSize"
-                        android:gravity="center"/>
+					<TextView
+						android:layout_width="200dp"
+						android:layout_height="wrap_content"
+						android:text="Size adjustment"
+						android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+					<Spinner
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						android:id="@+id/customAcSize"
+						android:gravity="center"/>
 
 				</LinearLayout>
 

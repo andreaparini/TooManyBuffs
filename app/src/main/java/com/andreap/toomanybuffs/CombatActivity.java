@@ -36,9 +36,15 @@ public class CombatActivity extends AppCompatActivity
         TextView strength = (TextView) findViewById(R.id.totalStrength);
         TextView dexterity = (TextView) findViewById(R.id.totalDexterity);
         TextView constitution = (TextView) findViewById(R.id.totalConstitution);
+        TextView intelligence = (TextView) findViewById(R.id.totalIntelligence);
+        TextView wisdom = (TextView) findViewById(R.id.totalWisdom);
+        TextView charisma = (TextView) findViewById(R.id.totalCharisma);
         TextView strengthMod = (TextView) findViewById(R.id.totalStrengthMod);
         TextView dexterityMod = (TextView) findViewById(R.id.totalDexterityMod);
         TextView constitutionMod = (TextView) findViewById(R.id.totalConstitutionMod);
+        TextView intelligenceMod = (TextView) findViewById(R.id.totalIntelligenceMod);
+        TextView wisdomMod = (TextView) findViewById(R.id.totalWisdomMod);
+        TextView charismaMod = (TextView) findViewById(R.id.totalCharismaMod);
         TextView AC = (TextView) findViewById(R.id.totalAC);
         final TextView HP = (TextView) findViewById(R.id.totalHP);
         
@@ -49,35 +55,63 @@ public class CombatActivity extends AppCompatActivity
         int strNumber = staticBuild.getStrength();
         int dexNumber = staticBuild.getDexterity();
         int conNumber = staticBuild.getConstitution();
+        int intlNumber = staticBuild.getIntelligence();
+        int wisNumber = staticBuild.getWisdom();
+        int chaNumber = staticBuild.getCharisma();
         int strMod = staticBuild.getStrModifier();
         int dexMod = staticBuild.getDexModifier();
         int conMod = staticBuild.getConModifier();
+        int intlMod = staticBuild.getIntlModifier();
+        int wisMod = staticBuild.getWisModifier();
+        int chaMod = staticBuild.getChaModifier();
         int acNumber = staticBuild.getTotalAC();
         int hpNumber = staticBuild.getTotalHP();
         
         String sStrMod = new String(Integer.toString(strMod));
         String sDexMod = new String(Integer.toString(dexMod));
         String sConMod = new String(Integer.toString(conMod));
+        String sIntlMod = new String(Integer.toString(intlMod));
+        String sWisMod = new String(Integer.toString(wisMod));
+        String sChaMod = new String(Integer.toString(chaMod));
         
         if (strMod > 0)
         {
             sStrMod = "+"+sStrMod;
         }
-        if (strMod > 0)
+        if (dexMod > 0)
         {
             sDexMod = "+"+sDexMod;
         }
-        if (strMod > 0) 
+        if (conMod > 0)
         {
             sConMod = "+"+sConMod;
         }
+        if (intlMod > 0)
+        {
+            sIntlMod = "+"+sIntlMod;
+        }
+        if (wisMod > 0)
+        {
+            sWisMod = "+"+sWisMod;
+        }
+        if (chaMod > 0)
+        {
+            sChaMod = "+"+sChaMod;
+        }
+        
         strength.setText(Integer.toString(strNumber));
         dexterity.setText(Integer.toString(dexNumber));
         constitution.setText(Integer.toString(conNumber));
-       
+        intelligence.setText(Integer.toString(intlNumber));
+        wisdom.setText(Integer.toString(wisNumber));
+        charisma.setText(Integer.toString(chaNumber));
+        
         strengthMod.setText(sStrMod);
         dexterityMod.setText(sDexMod);
         constitutionMod.setText(sConMod);
+        intelligenceMod.setText(sIntlMod);
+        wisdomMod.setText(sWisMod);
+        charismaMod.setText(sChaMod);
         
         AC.setText(Integer.toString(acNumber));
         
@@ -224,8 +258,20 @@ public class CombatActivity extends AppCompatActivity
                 {
                     numericToHit +=
                         staticBuild.getConModifier();
+                }else if ((savedAttacks.get(j-1).attackBasedOn).equals("Intelligence"))
+                {
+                    numericToHit +=
+                            staticBuild.getIntlModifier();
+                }else if ((savedAttacks.get(j-1).attackBasedOn).equals("Wisdom"))
+                {
+                    numericToHit +=
+                            staticBuild.getWisModifier();
+                }else if ((savedAttacks.get(j-1).attackBasedOn).equals("Charisma"))
+                {
+                    numericToHit +=
+                            staticBuild.getChaModifier();
                 }
-                
+
                 if((savedAttacks.get(j-1).TWF)
                         .equals("Main Hand: normal penalties (-6)"))
                 {
@@ -538,8 +584,20 @@ public class CombatActivity extends AppCompatActivity
                 {
                     numericBonusDamage +=
                         staticBuild.getConModifier();
-                } 
-                
+                } else if ((savedAttacks.get(j-1).damageBasedOn).equals("Intelligence"))
+                {
+                    numericBonusDamage +=
+                            staticBuild.getIntlModifier();
+                }  else if ((savedAttacks.get(j-1).damageBasedOn).equals("Wisdom"))
+                {
+                    numericBonusDamage +=
+                            staticBuild.getWisModifier();
+                } else if ((savedAttacks.get(j-1).damageBasedOn).equals("Charisma"))
+                {
+                    numericBonusDamage +=
+                            staticBuild.getChaModifier();
+                }
+
                 if(!(savedAttacks.get(j-1).weaponEnhancement)
                    .equals("Masterwork"))
                 {

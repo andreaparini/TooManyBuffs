@@ -37,6 +37,9 @@ public class CustomizationActivity extends AppCompatActivity
         TextView strModView = (TextView) findViewById(R.id.customStrTextView);
         TextView dexModView = (TextView) findViewById(R.id.customDexTextView);
         TextView conModView = (TextView) findViewById(R.id.customConTextView);
+        TextView intlModView = (TextView) findViewById(R.id.customIntlTextView);
+        TextView wisModView = (TextView) findViewById(R.id.customWisTextView);
+        TextView chaModView = (TextView) findViewById(R.id.customChaTextView);
         TextView toHitModView = (TextView) findViewById(R.id.customToHitTextView);
         TextView dmgModView = (TextView) findViewById(R.id.customDmgTextView);
         TextView acModView = (TextView) findViewById(R.id.customAcTextView);
@@ -46,6 +49,9 @@ public class CustomizationActivity extends AppCompatActivity
         ImageView toHitModIView = (ImageView) findViewById(R.id.customizationImageView4);
         ImageView dmgModIView = (ImageView) findViewById(R.id.customizationImageView5);
         ImageView acModIView = (ImageView) findViewById(R.id.customizationImageView6);
+        ImageView intlModIView = (ImageView) findViewById(R.id.customizationImageView7);
+        ImageView wisModIView = (ImageView) findViewById(R.id.customizationImageView8);
+        ImageView chaModIView = (ImageView) findViewById(R.id.customizationImageView9);
         
         strModView.setOnClickListener(new OnClickListener() {
                 @Override
@@ -93,6 +99,60 @@ public class CustomizationActivity extends AppCompatActivity
                     else
                     {                      
                         conToShow.setVisibility(View.GONE);
+                    }
+
+                }
+            });
+
+        intlModView.setOnClickListener(new OnClickListener() {
+
+                @Override
+                public void onClick(View v)
+                {
+                    View intlToShow = (LinearLayout) findViewById(R.id.customIntlToShow);
+                    if (intlToShow.getVisibility() == View.GONE)
+                    {
+                        intlToShow.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        intlToShow.setVisibility(View.GONE);
+                    }
+
+                }
+            });
+
+        wisModView.setOnClickListener(new OnClickListener() {
+
+                @Override
+                public void onClick(View v)
+                {
+                    View wisToShow = (LinearLayout) findViewById(R.id.customWisToShow);
+                    if (wisToShow.getVisibility() == View.GONE)
+                    {
+                        wisToShow.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        wisToShow.setVisibility(View.GONE);
+                    }
+
+                }
+            });
+
+        chaModView.setOnClickListener(new OnClickListener() {
+
+                @Override
+                public void onClick(View v)
+                {
+                    View chaToShow = (LinearLayout) findViewById(R.id.customChaToShow);
+                    if (chaToShow.getVisibility() == View.GONE)
+                    {
+                        chaToShow.setVisibility(View.VISIBLE);
+                    }
+                        else
+                    {
+                        chaToShow.setVisibility(View.GONE);
                     }
 
                 }
@@ -204,6 +264,54 @@ public class CustomizationActivity extends AppCompatActivity
 
                 }
             });
+        intlModIView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    View intlToShow = (LinearLayout) findViewById(R.id.customIntlToShow);
+                    if (intlToShow.getVisibility() == View.GONE)
+                    {
+                        intlToShow.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        intlToShow.setVisibility(View.GONE);
+                    }
+
+                }
+            });
+        wisModIView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    View wisToShow = (LinearLayout) findViewById(R.id.customWisToShow);
+                    if (wisToShow.getVisibility() == View.GONE)
+                    {
+                        wisToShow.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        wisToShow.setVisibility(View.GONE);
+                    }
+
+                }
+            });
+        chaModIView.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v)
+                {
+                    View chaToShow = (LinearLayout) findViewById(R.id.customChaToShow);
+                    if (chaToShow.getVisibility() == View.GONE)
+                    {
+                        chaToShow.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        chaToShow.setVisibility(View.GONE);
+                    }
+
+                }
+            });
 
         toHitModIView.setOnClickListener(new OnClickListener() {
 
@@ -278,7 +386,25 @@ public class CustomizationActivity extends AppCompatActivity
         Spinner conSize = (Spinner) findViewById(R.id.customConSize);
         Spinner conAlchemical = (Spinner) findViewById(R.id.customConAlchemical);
         Spinner conInherent = (Spinner) findViewById(R.id.customConInherent);
-        Spinner conOther = (Spinner) findViewById(R.id.customConOther);         
+        Spinner conOther = (Spinner) findViewById(R.id.customConOther);
+
+        Spinner intlMorale = (Spinner) findViewById(R.id.customIntlMorale);
+        Spinner intlEnhancement = (Spinner) findViewById(R.id.customIntlEnhancement);
+        Spinner intlAlchemical = (Spinner) findViewById(R.id.customIntlAlchemical);
+        Spinner intlInherent = (Spinner) findViewById(R.id.customIntlInherent);
+        Spinner intlOther = (Spinner) findViewById(R.id.customIntlOther);
+
+        Spinner wisMorale = (Spinner) findViewById(R.id.customWisMorale);
+        Spinner wisEnhancement = (Spinner) findViewById(R.id.customWisEnhancement);
+        Spinner wisAlchemical = (Spinner) findViewById(R.id.customWisAlchemical);
+        Spinner wisInherent = (Spinner) findViewById(R.id.customWisInherent);
+        Spinner wisOther = (Spinner) findViewById(R.id.customWisOther);
+
+        Spinner chaMorale = (Spinner) findViewById(R.id.customChaMorale);
+        Spinner chaEnhancement = (Spinner) findViewById(R.id.customChaEnhancement);
+        Spinner chaAlchemical = (Spinner) findViewById(R.id.customChaAlchemical);
+        Spinner chaInherent = (Spinner) findViewById(R.id.customChaInherent);
+        Spinner chaOther = (Spinner) findViewById(R.id.customChaOther);
 
         Spinner toHitMorale = (Spinner) findViewById(R.id.customToHitMorale);
         Spinner toHitLuck = (Spinner) findViewById(R.id.customToHitLuck);      
@@ -332,7 +458,25 @@ public class CustomizationActivity extends AppCompatActivity
         conSize.setAdapter(custom015Adapter);
         conAlchemical.setAdapter(custom015Adapter);
         conInherent.setAdapter(custom015Adapter);
-        conOther.setAdapter(custom015Adapter); 
+        conOther.setAdapter(custom015Adapter);
+
+        intlMorale.setAdapter(custom015Adapter);
+        intlEnhancement.setAdapter(custom015Adapter);
+        intlAlchemical.setAdapter(custom015Adapter);
+        intlInherent.setAdapter(custom015Adapter);
+        intlOther.setAdapter(custom015Adapter);
+
+        wisMorale.setAdapter(custom015Adapter);
+        wisEnhancement.setAdapter(custom015Adapter);
+        wisAlchemical.setAdapter(custom015Adapter);
+        wisInherent.setAdapter(custom015Adapter);
+        wisOther.setAdapter(custom015Adapter);
+
+        chaMorale.setAdapter(custom015Adapter);
+        chaEnhancement.setAdapter(custom015Adapter);
+        chaAlchemical.setAdapter(custom015Adapter);
+        chaInherent.setAdapter(custom015Adapter);
+        chaOther.setAdapter(custom015Adapter);
 
         toHitMorale.setAdapter(custom015Adapter);
         toHitLuck.setAdapter(custom015Adapter);
@@ -402,7 +546,10 @@ public class CustomizationActivity extends AppCompatActivity
                  staticBuild.strInherent, staticBuild.strOther, staticBuild.dex, staticBuild.dexEnhancement, staticBuild.dexMorale,
                  staticBuild.dexSize, staticBuild.dexAlchemical, staticBuild.dexInherent, staticBuild.dexOther, staticBuild.con,
                  staticBuild.conEnhancement, staticBuild.conMorale, staticBuild.conSize, staticBuild.conAlchemical,
-                 staticBuild.conInherent, staticBuild.conOther, staticBuild.toHitMorale, staticBuild.toHitLuck,
+                 staticBuild.conInherent, staticBuild.conOther,staticBuild.intl, staticBuild.intlEnhancement, staticBuild.intlMorale, staticBuild.intlAlchemical, 
+                 staticBuild.intlInherent, staticBuild.intlOther, staticBuild.wis, staticBuild.wisEnhancement, staticBuild.wisMorale, staticBuild.wisAlchemical,
+                 staticBuild.wisInherent, staticBuild.wisOther, staticBuild.cha, staticBuild.chaEnhancement, staticBuild.chaMorale, staticBuild.chaAlchemical,
+                 staticBuild.chaInherent, staticBuild.chaOther, staticBuild.toHitMorale, staticBuild.toHitLuck,
                  staticBuild.toHitSacred, staticBuild.toHitSize, staticBuild.toHitUntyped, staticBuild.toHitOther,
                  staticBuild.dmgMorale, staticBuild.dmgLuck, staticBuild. dmgSacred,
                  staticBuild.dmgUntyped, staticBuild.dmgOther, staticBuild.acArmor, staticBuild.acNatural,
@@ -504,6 +651,51 @@ public class CustomizationActivity extends AppCompatActivity
         staticBuild.conInherent = Integer.parseInt(String.valueOf(conInherent.getSelectedItem()));
         staticBuild.conOther = Integer.parseInt(String.valueOf(conOther.getSelectedItem()));
 
+        //intelligence
+
+        Spinner intlMorale = (Spinner) findViewById(R.id.customIntlMorale);
+        Spinner intlEnhancement = (Spinner) findViewById(R.id.customIntlEnhancement);
+        Spinner intlAlchemical = (Spinner) findViewById(R.id.customIntlAlchemical);
+        Spinner intlInherent = (Spinner) findViewById(R.id.customIntlInherent);
+        Spinner intlOther = (Spinner) findViewById(R.id.customIntlOther);
+
+        staticBuild.intlMorale = Integer.parseInt(String.valueOf(intlMorale.getSelectedItem()));
+        staticBuild.intlEnhancement = Integer.parseInt(String.valueOf(intlEnhancement.getSelectedItem()));
+        staticBuild.intlAlchemical = Integer.parseInt(String.valueOf(intlAlchemical.getSelectedItem()));
+        staticBuild.intlInherent = Integer.parseInt(String.valueOf(intlInherent.getSelectedItem()));
+        staticBuild.intlOther = Integer.parseInt(String.valueOf(intlOther.getSelectedItem()));
+
+
+        //wisdom
+
+        Spinner wisMorale = (Spinner) findViewById(R.id.customWisMorale);
+        Spinner wisEnhancement = (Spinner) findViewById(R.id.customWisEnhancement);
+        Spinner wisAlchemical = (Spinner) findViewById(R.id.customWisAlchemical);
+        Spinner wisInherent = (Spinner) findViewById(R.id.customWisInherent);
+        Spinner wisOther = (Spinner) findViewById(R.id.customWisOther);
+
+        staticBuild.wisMorale = Integer.parseInt(String.valueOf(wisMorale.getSelectedItem()));
+        staticBuild.wisEnhancement = Integer.parseInt(String.valueOf(wisEnhancement.getSelectedItem()));
+        staticBuild.wisAlchemical = Integer.parseInt(String.valueOf(wisAlchemical.getSelectedItem()));
+        staticBuild.wisInherent = Integer.parseInt(String.valueOf(wisInherent.getSelectedItem()));
+        staticBuild.wisOther = Integer.parseInt(String.valueOf(wisOther.getSelectedItem()));
+
+
+        //charisma
+
+        Spinner chaMorale = (Spinner) findViewById(R.id.customChaMorale);
+        Spinner chaEnhancement = (Spinner) findViewById(R.id.customChaEnhancement);
+        Spinner chaAlchemical = (Spinner) findViewById(R.id.customChaAlchemical);
+        Spinner chaInherent = (Spinner) findViewById(R.id.customChaInherent);
+        Spinner chaOther = (Spinner) findViewById(R.id.customChaOther);
+
+        staticBuild.chaMorale = Integer.parseInt(String.valueOf(chaMorale.getSelectedItem()));
+        staticBuild.chaEnhancement = Integer.parseInt(String.valueOf(chaEnhancement.getSelectedItem()));
+        staticBuild.chaAlchemical = Integer.parseInt(String.valueOf(chaAlchemical.getSelectedItem()));
+        staticBuild.chaInherent = Integer.parseInt(String.valueOf(chaInherent.getSelectedItem()));
+        staticBuild.chaOther = Integer.parseInt(String.valueOf(chaOther.getSelectedItem()));
+
+
         //to hit
 
         Spinner toHitMorale = (Spinner) findViewById(R.id.customToHitMorale);
@@ -592,8 +784,6 @@ public class CustomizationActivity extends AppCompatActivity
         Spinner strAlchemical = (Spinner) findViewById(R.id.customStrAlchemical);
         Spinner strInherent = (Spinner) findViewById(R.id.customStrInherent);
         Spinner strOther = (Spinner) findViewById(R.id.customStrOther);         
-
-
 
 
         ArrayAdapter<CharSequence> custom015Adapter = ArrayAdapter.createFromResource
@@ -690,6 +880,92 @@ public class CustomizationActivity extends AppCompatActivity
         conInherent.setSelection(conInherentPos);       
         int conOtherPos = custom015Adapter.getPosition(Integer.toString(staticBuild.conOther));
         conOther.setSelection(conOtherPos);
+
+        //intelligence
+
+
+        Spinner intlMorale = (Spinner) findViewById(R.id.customIntlMorale);
+        Spinner intlEnhancement = (Spinner) findViewById(R.id.customIntlEnhancement);
+        Spinner intlAlchemical = (Spinner) findViewById(R.id.customIntlAlchemical);
+        Spinner intlInherent = (Spinner) findViewById(R.id.customIntlInherent);
+        Spinner intlOther = (Spinner) findViewById(R.id.customIntlOther);
+
+
+
+        intlMorale.setAdapter(custom015Adapter);
+        intlEnhancement.setAdapter(custom015Adapter);
+        intlAlchemical.setAdapter(custom015Adapter);
+        intlInherent.setAdapter(custom015Adapter);
+        intlOther.setAdapter(custom015Adapter);
+
+
+
+        int intlMoralePos = custom015Adapter.getPosition(Integer.toString(staticBuild.intlMorale));
+        intlMorale.setSelection(intlMoralePos);
+        int intlEnhancementPos = custom015Adapter.getPosition(Integer.toString(staticBuild.intlEnhancement));
+        intlEnhancement.setSelection(intlEnhancementPos);
+        int intlAlchemicalPos = custom015Adapter.getPosition(Integer.toString(staticBuild.intlAlchemical));
+        intlAlchemical.setSelection(intlAlchemicalPos);
+        int intlInherentPos = custom015Adapter.getPosition(Integer.toString(staticBuild.intlInherent));
+        intlInherent.setSelection(intlInherentPos);
+        int intlOtherPos = custom015Adapter.getPosition(Integer.toString(staticBuild.intlOther));
+        intlOther.setSelection(intlOtherPos);
+
+        //wisdom
+
+
+        Spinner wisMorale = (Spinner) findViewById(R.id.customWisMorale);
+        Spinner wisEnhancement = (Spinner) findViewById(R.id.customWisEnhancement);
+        Spinner wisAlchemical = (Spinner) findViewById(R.id.customWisAlchemical);
+        Spinner wisInherent = (Spinner) findViewById(R.id.customWisInherent);
+        Spinner wisOther = (Spinner) findViewById(R.id.customWisOther);
+
+        wisMorale.setAdapter(custom015Adapter);
+        wisEnhancement.setAdapter(custom015Adapter);
+        wisAlchemical.setAdapter(custom015Adapter);
+        wisInherent.setAdapter(custom015Adapter);
+        wisOther.setAdapter(custom015Adapter);
+
+        int wisMoralePos = custom015Adapter.getPosition(Integer.toString(staticBuild.wisMorale));
+        wisMorale.setSelection(wisMoralePos);
+        int wisEnhancementPos = custom015Adapter.getPosition(Integer.toString(staticBuild.wisEnhancement));
+        wisEnhancement.setSelection(wisEnhancementPos);
+        int wisAlchemicalPos = custom015Adapter.getPosition(Integer.toString(staticBuild.wisAlchemical));
+        wisAlchemical.setSelection(wisAlchemicalPos);
+        int wisInherentPos = custom015Adapter.getPosition(Integer.toString(staticBuild.wisInherent));
+        wisInherent.setSelection(wisInherentPos);
+        int wisOtherPos = custom015Adapter.getPosition(Integer.toString(staticBuild.wisOther));
+        wisOther.setSelection(wisOtherPos);
+
+        //charisma
+
+
+        Spinner chaMorale = (Spinner) findViewById(R.id.customChaMorale);
+        Spinner chaEnhancement = (Spinner) findViewById(R.id.customChaEnhancement);
+        Spinner chaAlchemical = (Spinner) findViewById(R.id.customChaAlchemical);
+        Spinner chaInherent = (Spinner) findViewById(R.id.customChaInherent);
+        Spinner chaOther = (Spinner) findViewById(R.id.customChaOther);
+
+
+
+        chaMorale.setAdapter(custom015Adapter);
+        chaEnhancement.setAdapter(custom015Adapter);
+        chaAlchemical.setAdapter(custom015Adapter);
+        chaInherent.setAdapter(custom015Adapter);
+        chaOther.setAdapter(custom015Adapter);
+
+
+
+        int chaMoralePos = custom015Adapter.getPosition(Integer.toString(staticBuild.chaMorale));
+        chaMorale.setSelection(chaMoralePos);
+        int chaEnhancementPos = custom015Adapter.getPosition(Integer.toString(staticBuild.chaEnhancement));
+        chaEnhancement.setSelection(chaEnhancementPos);
+        int chaAlchemicalPos = custom015Adapter.getPosition(Integer.toString(staticBuild.chaAlchemical));
+        chaAlchemical.setSelection(chaAlchemicalPos);
+        int chaInherentPos = custom015Adapter.getPosition(Integer.toString(staticBuild.chaInherent));
+        chaInherent.setSelection(chaInherentPos);
+        int chaOtherPos = custom015Adapter.getPosition(Integer.toString(staticBuild.chaOther));
+        chaOther.setSelection(chaOtherPos);
 
 
 
@@ -796,9 +1072,15 @@ public class CustomizationActivity extends AppCompatActivity
         acSize.setSelection(acSizePos);     
         int acOtherPos = custom015Adapter.getPosition(Integer.toString(staticBuild.acOther));
         acOther.setSelection(acOtherPos);
-        int acDexMaxPos = customDexMaxAdapter.getPosition(Integer.toString(staticBuild.acDexMax));
-        acDexMax.setSelection(acDexMaxPos);
-
+        if(staticBuild.acDexMax == -1)
+        {
+            acDexMax.setSelection(0);
+        }
+        else
+        {
+            int acDexMaxPos = customDexMaxAdapter.getPosition(Integer.toString(staticBuild.acDexMax));
+            acDexMax.setSelection(acDexMaxPos);
+        }
 
 
 

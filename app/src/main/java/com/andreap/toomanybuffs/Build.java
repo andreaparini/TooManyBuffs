@@ -59,7 +59,31 @@ public class Build implements Serializable
     public int conAlchemical;
     public int conInherent;
     public int conOther;
-    
+
+    //intelligence and bonuses
+    public int intl;
+    public int intlEnhancement;
+    public int intlMorale;
+    public int intlAlchemical;
+    public int intlInherent;
+    public int intlOther;
+
+    //wisdom and bonuses
+    public int wis;
+    public int wisEnhancement;
+    public int wisMorale;
+    public int wisAlchemical;
+    public int wisInherent;
+    public int wisOther;
+
+    //charisma and bonuses
+    public int cha;
+    public int chaEnhancement;
+    public int chaMorale;
+    public int chaAlchemical;
+    public int chaInherent;
+    public int chaOther;
+
     //to-hit bonuses
     public int toHitMorale;
     public int toHitLuck;
@@ -123,6 +147,30 @@ public class Build implements Serializable
         this.conInherent = 0;
         this.conOther = 0;
 
+        //intelligence and bonuses
+        this.intl = 0;
+        this.intlEnhancement = 0;
+        this.intlMorale = 0;
+        this.intlAlchemical = 0;
+        this.intlInherent = 0;
+        this.intlOther = 0;
+
+        //wisdom and bonuses
+        this.wis = 0;
+        this.wisEnhancement = 0;
+        this.wisMorale = 0;
+        this.wisAlchemical = 0;
+        this.wisInherent = 0;
+        this.wisOther = 0;
+
+        //charisma and bonuses
+        this.cha = 0;
+        this.chaEnhancement = 0;
+        this.chaMorale = 0;
+        this.chaAlchemical = 0;
+        this.chaInherent = 0;
+        this.chaOther = 0;
+
         //to-hit bonuses
         this.toHitMorale = 0;
         this.toHitLuck = 0;
@@ -155,7 +203,7 @@ public class Build implements Serializable
     //field initialization
     public Build initialize
     (String name, String playableClass, int level, int bab,
-     int baseHP, int str, int dex, int con)
+     int baseHP, int str, int dex, int con, int intl, int wis, int cha)
     {
         Build returnBuild = new Build();
         returnBuild.name = name;
@@ -173,7 +221,11 @@ public class Build implements Serializable
      int strInherent, int strOther, int dex, int dexEnhancement, int dexMorale,
      int dexSize, int dexAlchemical, int dexInherent, int dexOther, int con,
      int conEnhancement, int conMorale, int conSize, int conAlchemical,
-     int conInherent, int conOther, int toHitMorale, int toHitLuck,
+     int conInherent, int conOther,int intl, int intlEnhancement, int intlMorale,
+     int intlAlchemical, int intlInherent, int intlOther, int wis, int wisEnhancement,
+     int wisMorale, int wisAlchemical, int wisInherent, int wisOther, int cha,
+     int chaEnhancement, int chaMorale, int chaAlchemical, int chaInherent,
+     int chaOther, int toHitMorale, int toHitLuck,
      int toHitSacred, int toHitSize, int toHitUntyped, int toHitOther,
      int dmgMorale, int dmgLuck,  int dmgSacred,
      int dmgUntyped, int dmgOther, int acArmor, int acNatural,
@@ -211,6 +263,27 @@ public class Build implements Serializable
         returnBuild.conAlchemical = conAlchemical;
         returnBuild.conInherent = conInherent;
         returnBuild.conOther = conOther;
+
+        returnBuild.intl = intl;
+        returnBuild.intlEnhancement = intlEnhancement;
+        returnBuild.intlMorale = intlMorale;
+        returnBuild.intlAlchemical = intlAlchemical;
+        returnBuild.intlInherent = intlInherent;
+        returnBuild.intlOther = intlOther;
+
+        returnBuild.wis = wis;
+        returnBuild.wisEnhancement = wisEnhancement;
+        returnBuild.wisMorale = wisMorale;
+        returnBuild.wisAlchemical =wisAlchemical;
+        returnBuild.wisInherent = wisInherent;
+        returnBuild.wisOther = wisOther;
+
+        returnBuild.cha = cha;
+        returnBuild.chaEnhancement = chaEnhancement;
+        returnBuild.chaMorale = chaMorale;
+        returnBuild.chaAlchemical =chaAlchemical;
+        returnBuild.chaInherent = chaInherent;
+        returnBuild.chaOther = chaOther;
 
         returnBuild.toHitMorale = toHitMorale;
         returnBuild.toHitLuck = toHitLuck;
@@ -311,7 +384,73 @@ public class Build implements Serializable
             this.conInherent +
             this.conOther;
     }
-    
+
+    public int getIntlModifier ()
+    {
+        double castedIntl =
+                this.intl +
+                        this.intlEnhancement +
+                        this.intlMorale +
+                        this.intlAlchemical +
+                        this.intlInherent +
+                        this.intlOther -10;
+        return (int)(Math.floor(castedIntl/2.0));
+    }
+
+    public int getIntelligence ()
+    {
+        return this.intl +
+                this.intlEnhancement +
+                this.intlMorale +
+                this.intlAlchemical +
+                this.intlInherent +
+                this.intlOther;
+    }
+
+    public int getWisModifier ()
+    {
+        double castedWis =
+                this.wis +
+                        this.wisEnhancement +
+                        this.wisMorale +
+                        this.wisAlchemical +
+                        this.wisInherent +
+                        this.wisOther -10;
+        return (int)(Math.floor(castedWis/2.0));
+    }
+
+    public int getWisdom ()
+    {
+        return this.wis +
+                this.wisEnhancement +
+                this.wisMorale +
+                this.wisAlchemical +
+                this.wisInherent +
+                this.wisOther;
+    }
+
+    public int getChaModifier ()
+    {
+        double castedCha =
+                this.cha +
+                        this.chaEnhancement +
+                        this.chaMorale +
+                        this.chaAlchemical +
+                        this.chaInherent +
+                        this.chaOther -10;
+        return (int)(Math.floor(castedCha/2.0));
+    }
+
+    public int getCharisma ()
+    {
+        return this.cha +
+                this.chaEnhancement +
+                this.chaMorale +
+                this.chaAlchemical +
+                this.chaInherent +
+                this.chaOther;
+    }
+
     public int getTotalHP ()
     {
         return this.baseHP + 
@@ -424,6 +563,24 @@ public class Build implements Serializable
         int conAlchemical = 0;
         int conInherent = 0;
         int conOther = 0;
+        int intl = 0;
+        int intlEnhancement = 0;
+        int intlMorale = 0;
+        int intlAlchemical = 0;
+        int intlInherent = 0;
+        int intlOther = 0;
+        int wis = 0;
+        int wisEnhancement = 0;
+        int wisMorale = 0;
+        int wisAlchemical = 0;
+        int wisInherent = 0;
+        int wisOther = 0;
+        int cha = 0;
+        int chaEnhancement = 0;
+        int chaMorale = 0;
+        int chaAlchemical = 0;
+        int chaInherent = 0;
+        int chaOther = 0;
         int toHitMorale = 0;
         int toHitLuck = 0;
         int toHitSacred = 0;
@@ -506,6 +663,30 @@ public class Build implements Serializable
                           conInherent = Integer.parseInt(eElement.getElementsByTagName("coninherent").item(0).getTextContent());
                           conOther = Integer.parseInt(eElement.getElementsByTagName("conother").item(0).getTextContent());
 
+                          //intelligence and bonuses
+                          intl = Integer.parseInt(eElement.getElementsByTagName("intl").item(0).getTextContent());
+                          intlEnhancement = Integer.parseInt(eElement.getElementsByTagName("intlenhancement").item(0).getTextContent());
+                          intlMorale = Integer.parseInt(eElement.getElementsByTagName("intlmorale").item(0).getTextContent());
+                          intlAlchemical = Integer.parseInt(eElement.getElementsByTagName("intlalchemical").item(0).getTextContent());
+                          intlInherent = Integer.parseInt(eElement.getElementsByTagName("intlinherent").item(0).getTextContent());
+                          intlOther = Integer.parseInt(eElement.getElementsByTagName("intlother").item(0).getTextContent());
+
+                          //wisdom and bonuses
+                          wis = Integer.parseInt(eElement.getElementsByTagName("wis").item(0).getTextContent());
+                          wisEnhancement = Integer.parseInt(eElement.getElementsByTagName("wisenhancement").item(0).getTextContent());
+                          wisMorale = Integer.parseInt(eElement.getElementsByTagName("wismorale").item(0).getTextContent());
+                          wisAlchemical = Integer.parseInt(eElement.getElementsByTagName("wisalchemical").item(0).getTextContent());
+                          wisInherent = Integer.parseInt(eElement.getElementsByTagName("wisinherent").item(0).getTextContent());
+                          wisOther = Integer.parseInt(eElement.getElementsByTagName("wisother").item(0).getTextContent());
+
+                          //charisma and bonuses
+                          cha = Integer.parseInt(eElement.getElementsByTagName("cha").item(0).getTextContent());
+                          chaEnhancement = Integer.parseInt(eElement.getElementsByTagName("chaenhancement").item(0).getTextContent());
+                          chaMorale = Integer.parseInt(eElement.getElementsByTagName("chamorale").item(0).getTextContent());
+                          chaAlchemical = Integer.parseInt(eElement.getElementsByTagName("chaalchemical").item(0).getTextContent());
+                          chaInherent = Integer.parseInt(eElement.getElementsByTagName("chainherent").item(0).getTextContent());
+                          chaOther = Integer.parseInt(eElement.getElementsByTagName("chaother").item(0).getTextContent());
+
                         //to-hit bonuses
                           toHitMorale = Integer.parseInt(eElement.getElementsByTagName("tohitmorale").item(0).getTextContent());
                           toHitLuck = Integer.parseInt(eElement.getElementsByTagName("tohitluck").item(0).getTextContent());
@@ -529,7 +710,7 @@ public class Build implements Serializable
                           acShield = Integer.parseInt(eElement.getElementsByTagName("acshield").item(0).getTextContent());
                           acDeflection = Integer.parseInt(eElement.getElementsByTagName("acdeflection").item(0).getTextContent());
                           acUntyped = Integer.parseInt(eElement.getElementsByTagName("acuntyped").item(0).getTextContent());
-                        acSize = Integer.parseInt(eElement.getElementsByTagName("acsize").item(0).getTextContent());
+                          acSize = Integer.parseInt(eElement.getElementsByTagName("acsize").item(0).getTextContent());
                           acOther = Integer.parseInt(eElement.getElementsByTagName("acother").item(0).getTextContent());
                           acDexMax = Integer.parseInt(eElement.getElementsByTagName("acdexmax").item(0).getTextContent());
                           
@@ -552,7 +733,11 @@ public class Build implements Serializable
                                                      strInherent, strOther, dex, dexEnhancement, dexMorale,
                                                      dexSize, dexAlchemical, dexInherent, dexOther, con,
                                                      conEnhancement, conMorale, conSize, conAlchemical,
-                                                     conInherent, conOther, toHitMorale, toHitLuck,
+                                                     conInherent, conOther, intl, intlEnhancement, intlMorale,
+                                                     intlAlchemical, intlInherent, intlOther, wis, wisEnhancement,
+                                                     wisMorale, wisAlchemical, wisInherent, wisOther, cha,
+                                                     chaEnhancement, chaMorale, chaAlchemical, chaInherent, chaOther,
+                                                     toHitMorale, toHitLuck,
                                                      toHitSacred, toHitSize, toHitUntyped, toHitOther,
                                                      dmgMorale, dmgLuck, dmgSacred,
                                                      dmgUntyped, dmgOther, acArmor, acNatural,
@@ -578,12 +763,15 @@ public class Build implements Serializable
                                   int strInherent, int strOther, int dex, int dexEnhancement, int dexMorale,
                                   int dexSize, int dexAlchemical, int dexInherent, int dexOther, int con,
                                   int conEnhancement, int conMorale, int conSize, int conAlchemical,
-                                  int conInherent, int conOther, int toHitMorale, int toHitLuck,
-                                  int toHitSacred, int toHitSize, int toHitUntyped, int toHitOther,
-                                  int dmgMorale, int dmgLuck,  int dmgSacred,
-                                  int dmgUntyped, int dmgOther, int acArmor, int acNatural,
-                                  int acNaturalEnhancement, int acSacred, int acShield, int acDeflection,
-                                  int acUntyped, int acOther, int acDexMax, int acSize)
+                                  int conInherent, int conOther, int intl, int intlEnhancement, int intlMorale,
+                                  int intlAlchemical, int intlInherent, int intlOther, int wis, int wisEnhancement,
+                                  int wisMorale, int wisAlchemical, int wisInherent, int wisOther, int cha,
+                                  int chaEnhancement, int chaMorale, int chaAlchemical, int chaInherent, int chaOther,
+                                  int toHitMorale, int toHitLuck, int toHitSacred, int toHitSize, int toHitUntyped,
+                                  int toHitOther, int dmgMorale, int dmgLuck,  int dmgSacred, int dmgUntyped,
+                                  int dmgOther, int acArmor, int acNatural, int acNaturalEnhancement,
+                                  int acSacred, int acShield, int acDeflection, int acUntyped, int acOther,
+                                  int acDexMax, int acSize)
     {
         Build useless = new Build();
         Build returnBuild;
@@ -649,6 +837,31 @@ public class Build implements Serializable
                         eElement.getElementsByTagName("coninherent").item(0).setTextContent(Integer.toString(conInherent));
                         eElement.getElementsByTagName("conother").item(0).setTextContent(Integer.toString(conOther));
 
+                        //intelligence and bonuses
+                        eElement.getElementsByTagName("intl").item(0).setTextContent(Integer.toString(intl));
+                        eElement.getElementsByTagName("intlenhancement").item(0).setTextContent(Integer.toString(intlEnhancement));
+                        eElement.getElementsByTagName("intlmorale").item(0).setTextContent(Integer.toString(intlMorale));
+                        eElement.getElementsByTagName("intlalchemical").item(0).setTextContent(Integer.toString(intlAlchemical));
+                        eElement.getElementsByTagName("intlinherent").item(0).setTextContent(Integer.toString(intlInherent));
+                        eElement.getElementsByTagName("intlother").item(0).setTextContent(Integer.toString(intlOther));
+
+                        //wisdom and bonuses
+                        eElement.getElementsByTagName("wis").item(0).setTextContent(Integer.toString(wis));
+                        eElement.getElementsByTagName("wisenhancement").item(0).setTextContent(Integer.toString(wisEnhancement));
+                        eElement.getElementsByTagName("wismorale").item(0).setTextContent(Integer.toString(wisMorale));
+                        eElement.getElementsByTagName("wisalchemical").item(0).setTextContent(Integer.toString(wisAlchemical));
+                        eElement.getElementsByTagName("wisinherent").item(0).setTextContent(Integer.toString(wisInherent));
+                        eElement.getElementsByTagName("wisother").item(0).setTextContent(Integer.toString(wisOther));
+
+
+                        //charisma and bonuses
+                        eElement.getElementsByTagName("cha").item(0).setTextContent(Integer.toString(cha));
+                        eElement.getElementsByTagName("chaenhancement").item(0).setTextContent(Integer.toString(chaEnhancement));
+                        eElement.getElementsByTagName("chamorale").item(0).setTextContent(Integer.toString(chaMorale));
+                        eElement.getElementsByTagName("chaalchemical").item(0).setTextContent(Integer.toString(chaAlchemical));
+                        eElement.getElementsByTagName("chainherent").item(0).setTextContent(Integer.toString(chaInherent));
+                        eElement.getElementsByTagName("chaother").item(0).setTextContent(Integer.toString(chaOther));
+
                         //to-hit bonuses
                         eElement.getElementsByTagName("tohitmorale").item(0).setTextContent(Integer.toString(toHitMorale));
                         eElement.getElementsByTagName("tohitluck").item(0).setTextContent(Integer.toString(toHitLuck));
@@ -695,7 +908,11 @@ public class Build implements Serializable
                                                  strInherent, strOther, dex, dexEnhancement, dexMorale,
                                                  dexSize, dexAlchemical, dexInherent, dexOther, con,
                                                  conEnhancement, conMorale, conSize, conAlchemical,
-                                                 conInherent, conOther, toHitMorale, toHitLuck,
+                                                 conInherent, conOther, intl, intlEnhancement, intlMorale,
+                                                 intlAlchemical, intlInherent, intlOther, wis, wisEnhancement,
+                                                 wisMorale, wisAlchemical, wisInherent, wisOther, cha,
+                                                 chaEnhancement, chaMorale, chaAlchemical, chaInherent,
+                                                 chaOther, toHitMorale, toHitLuck,
                                                  toHitSacred, toHitSize, toHitUntyped, toHitOther,
                                                  dmgMorale, dmgLuck,  dmgSacred,
                                                  dmgUntyped, dmgOther, acArmor, acNatural,

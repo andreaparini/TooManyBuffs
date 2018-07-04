@@ -50,6 +50,9 @@ public class ChangeInfoActivity extends AppCompatActivity
         EditText strView = (EditText) findViewById(R.id.updatebuildStrength);
         EditText dexView = (EditText) findViewById(R.id.updatebuildDexterity);
         EditText conView = (EditText) findViewById(R.id.updatebuildConstitution);
+        EditText intlView = (EditText) findViewById(R.id.updatebuildIntelligence);
+        EditText wisView = (EditText) findViewById(R.id.updatebuildWisdom);
+        EditText chaView = (EditText) findViewById(R.id.updatebuildCharisma);
         EditText babView = (EditText) findViewById(R.id.updatebuildBab);
         EditText hpView = (EditText) findViewById(R.id.updatebuildBaseHP);
         
@@ -59,6 +62,9 @@ public class ChangeInfoActivity extends AppCompatActivity
         strView.setText(Integer.toString(staticBuildChangeInfo.str));
         dexView.setText(Integer.toString(staticBuildChangeInfo.dex));
         conView.setText(Integer.toString(staticBuildChangeInfo.con));
+        intlView.setText(Integer.toString(staticBuildChangeInfo.intl));
+        wisView.setText(Integer.toString(staticBuildChangeInfo.wis));
+        chaView.setText(Integer.toString(staticBuildChangeInfo.cha));
         babView.setText(Integer.toString(staticBuildChangeInfo.bab));
         hpView.setText(Integer.toString(staticBuildChangeInfo.baseHP));
         
@@ -72,17 +78,24 @@ public class ChangeInfoActivity extends AppCompatActivity
         EditText strView = (EditText) findViewById(R.id.updatebuildStrength);
         EditText dexView = (EditText) findViewById(R.id.updatebuildDexterity);
         EditText conView = (EditText) findViewById(R.id.updatebuildConstitution);
+        EditText intlView = (EditText) findViewById(R.id.updatebuildIntelligence);
+        EditText wisView = (EditText) findViewById(R.id.updatebuildWisdom);
+        EditText chaView = (EditText) findViewById(R.id.updatebuildCharisma);
         EditText babView = (EditText) findViewById(R.id.updatebuildBab);
         EditText hpView = (EditText) findViewById(R.id.updatebuildBaseHP);
 
-        if( !nameView.getText().toString().equals("") && nameView.getText().toString().length() > 0 &&   
-           !classView.getText().toString().equals("") && classView.getText().toString().length() > 0 &&
-           !levelView.getText().toString().equals("") && levelView.getText().toString().length() > 0 &&
-           !strView.getText().toString().equals("") && strView.getText().toString().length() > 0 &&
-           !dexView.getText().toString().equals("") && dexView.getText().toString().length() > 0 &&
-           !conView.getText().toString().equals("") && conView.getText().toString().length() > 0 &&
-           !babView.getText().toString().equals("") && babView.getText().toString().length() > 0 &&
-           !hpView.getText().toString().equals("") && hpView.getText().toString().length() > 0)
+        if( !nameView.getText().toString().equals("") && nameView.getText().toString().length() > 0 &&
+                !classView.getText().toString().equals("") && classView.getText().toString().length() > 0 &&
+                !levelView.getText().toString().equals("") && levelView.getText().toString().length() > 0 &&
+                !strView.getText().toString().equals("") && strView.getText().toString().length() > 0 &&
+                !dexView.getText().toString().equals("") && dexView.getText().toString().length() > 0 &&
+                !conView.getText().toString().equals("") && conView.getText().toString().length() > 0 &&
+                !intlView.getText().toString().equals("") && intlView.getText().toString().length() > 0 &&
+                !wisView.getText().toString().equals("") && wisView.getText().toString().length() > 0 &&
+                !chaView.getText().toString().equals("") && chaView.getText().toString().length() > 0 &&
+                !babView.getText().toString().equals("") && babView.getText().toString().length() > 0 &&
+                !hpView.getText().toString().equals("") && hpView.getText().toString().length() > 0)
+
         {
             String name = new String(nameView.getText().toString());
             String playClass = new String(classView.getText().toString());
@@ -90,12 +103,18 @@ public class ChangeInfoActivity extends AppCompatActivity
             String strString = new String(strView.getText().toString());
             String dexString = new String(dexView.getText().toString());
             String conString = new String(conView.getText().toString());
+            String intlString = new String(intlView.getText().toString());
+            String wisString = new String(wisView.getText().toString());
+            String chaString = new String(chaView.getText().toString());
             String babString = new String(babView.getText().toString());
             String baseHpString = new String(hpView.getText().toString());
             int level = Integer.parseInt(levelString);
             int str = Integer.parseInt(strString);
             int dex = Integer.parseInt(dexString);
             int con = Integer.parseInt(conString);
+            int intl = Integer.parseInt(intlString);
+            int wis = Integer.parseInt(wisString);
+            int cha = Integer.parseInt(chaString);
             int bab = Integer.parseInt(babString);
             int baseHp = Integer.parseInt(baseHpString);
 
@@ -107,7 +126,7 @@ public class ChangeInfoActivity extends AppCompatActivity
              staticBuildChangeInfo.strInherent, staticBuildChangeInfo.strOther, dex, staticBuildChangeInfo.dexEnhancement, staticBuildChangeInfo.dexMorale,
              staticBuildChangeInfo.dexSize, staticBuildChangeInfo.dexAlchemical, staticBuildChangeInfo.dexInherent, staticBuildChangeInfo.dexOther, con,
              staticBuildChangeInfo.conEnhancement, staticBuildChangeInfo.conMorale, staticBuildChangeInfo.conSize, staticBuildChangeInfo.conAlchemical,
-             staticBuildChangeInfo.conInherent, staticBuildChangeInfo.conOther, staticBuildChangeInfo.toHitMorale, staticBuildChangeInfo.toHitLuck,
+             staticBuildChangeInfo.conInherent, staticBuildChangeInfo.conOther, intl, staticBuildChangeInfo.intlEnhancement, staticBuildChangeInfo.intlMorale, staticBuildChangeInfo.intlAlchemical, staticBuildChangeInfo.intlInherent, staticBuildChangeInfo.intlOther, wis, staticBuildChangeInfo.wisEnhancement, staticBuildChangeInfo.wisMorale, staticBuildChangeInfo.wisAlchemical, staticBuildChangeInfo.wisInherent, staticBuildChangeInfo.wisOther, cha, staticBuildChangeInfo.chaEnhancement, staticBuildChangeInfo.chaMorale, staticBuildChangeInfo.chaAlchemical, staticBuildChangeInfo.chaInherent, staticBuildChangeInfo.chaOther, staticBuildChangeInfo.toHitMorale, staticBuildChangeInfo.toHitLuck,
              staticBuildChangeInfo.toHitSacred, staticBuildChangeInfo.toHitSize, staticBuildChangeInfo.toHitUntyped, staticBuildChangeInfo.toHitOther,
              staticBuildChangeInfo.dmgMorale, staticBuildChangeInfo.dmgLuck, staticBuildChangeInfo. dmgSacred,
              staticBuildChangeInfo.dmgUntyped, staticBuildChangeInfo.dmgOther, staticBuildChangeInfo.acArmor, staticBuildChangeInfo.acNatural,

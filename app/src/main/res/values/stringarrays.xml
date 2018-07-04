@@ -62,6 +62,9 @@
         <item>Strength</item>
         <item>Dexterity</item>
         <item>Constitution</item>
+        <item>Intelligence</item>
+        <item>Wisdom</item>
+        <item>Charisma</item>
     </string-array>
     
     <string-array name="damagetype">
@@ -73,6 +76,9 @@
         <item>Dexterity</item>
         <item>1.5x Dexterity</item>
         <item>Constitution</item>
+        <item>Intelligence</item>
+        <item>Wisdom</item>
+        <item>Charisma</item>
         <item>None</item>
     </string-array>
     

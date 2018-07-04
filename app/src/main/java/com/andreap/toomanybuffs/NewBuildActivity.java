@@ -49,6 +49,9 @@ public class NewBuildActivity extends AppCompatActivity
         EditText strView = (EditText) findViewById(R.id.newbuildStrength);
         EditText dexView = (EditText) findViewById(R.id.newbuildDexterity);
         EditText conView = (EditText) findViewById(R.id.newbuildConstitution);
+        EditText intlView = (EditText) findViewById(R.id.newbuildIntelligence);
+        EditText wisView = (EditText) findViewById(R.id.newbuildWisdom);
+        EditText chaView = (EditText) findViewById(R.id.newbuildCharisma);
         EditText babView = (EditText) findViewById(R.id.newbuildBab);
         EditText hpView = (EditText) findViewById(R.id.newbuildBaseHP);
         
@@ -58,6 +61,9 @@ public class NewBuildActivity extends AppCompatActivity
             !strView.getText().toString().equals("") && strView.getText().toString().length() > 0 &&
             !dexView.getText().toString().equals("") && dexView.getText().toString().length() > 0 &&
             !conView.getText().toString().equals("") && conView.getText().toString().length() > 0 &&
+            !intlView.getText().toString().equals("") && intlView.getText().toString().length() > 0 &&
+            !wisView.getText().toString().equals("") && wisView.getText().toString().length() > 0 &&
+            !chaView.getText().toString().equals("") && chaView.getText().toString().length() > 0 &&
             !babView.getText().toString().equals("") && babView.getText().toString().length() > 0 &&
             !hpView.getText().toString().equals("") && hpView.getText().toString().length() > 0)
         {
@@ -67,12 +73,18 @@ public class NewBuildActivity extends AppCompatActivity
             String strString = new String(strView.getText().toString());
             String dexString = new String(dexView.getText().toString());
             String conString = new String(conView.getText().toString());
+            String intlString = new String(intlView.getText().toString());
+            String wisString = new String(wisView.getText().toString());
+            String chaString = new String(chaView.getText().toString());
             String babString = new String(babView.getText().toString());
             String baseHpString = new String(hpView.getText().toString());
             int level = Integer.parseInt(levelString);
             int str = Integer.parseInt(strString);
             int dex = Integer.parseInt(dexString);
             int con = Integer.parseInt(conString);
+            int intl = Integer.parseInt(intlString);
+            int wis = Integer.parseInt(wisString);
+            int cha = Integer.parseInt(chaString);
             int bab = Integer.parseInt(babString);
             int baseHp = Integer.parseInt(baseHpString);
 
@@ -82,12 +94,16 @@ public class NewBuildActivity extends AppCompatActivity
             strString = strString.trim();
             dexString = dexString.trim();
             conString = conString.trim();
+            intlString = intlString.trim();
+            wisString = wisString.trim();
+            chaString = chaString.trim();
             babString = babString.trim();
             baseHpString = baseHpString.trim();
             
             if (!buildExistsXmlFile(this, name))
             {
-                addNewBuild(this, name, playClass, level, str, dex , con, bab, baseHp);
+                addNewBuild(this, name, playClass, level, str, dex , con, 
+                            intl, wis, cha, bab, baseHp);
                 Intent intent = new Intent(this, CustomizationActivity.class);
                 intent.putExtra("loadedBuild", name);
                 startActivity(intent);
@@ -137,6 +153,7 @@ public class NewBuildActivity extends AppCompatActivity
 
     public void addNewBuild (Context ctx, String name, String playClass,
                              int level, int str, int dex, int con, 
+                             int intl, int wis, int cha,
                              int bab, int baseHp)
     {
 
@@ -173,6 +190,12 @@ public class NewBuildActivity extends AppCompatActivity
                 newDex.appendChild(doc.createTextNode(Integer.toString(dex)));
                 Element newCon = doc.createElement("con");
                 newCon.appendChild(doc.createTextNode(Integer.toString(con)));
+                Element newIntl = doc.createElement("intl");
+                newIntl.appendChild(doc.createTextNode(Integer.toString(intl)));
+                Element newWis = doc.createElement("wis");
+                newWis.appendChild(doc.createTextNode(Integer.toString(wis)));
+                Element newCha = doc.createElement("cha");
+                newCha.appendChild(doc.createTextNode(Integer.toString(cha)));
 
 
 
@@ -214,6 +237,41 @@ public class NewBuildActivity extends AppCompatActivity
                 newConInherent.appendChild(doc.createTextNode("0"));
                 Element newConOther = doc.createElement("conother");
                 newConOther.appendChild(doc.createTextNode("0"));
+
+                Element newIntlEnhancement = doc.createElement("intlenhancement");
+                newIntlEnhancement.appendChild(doc.createTextNode("0"));
+                Element newIntlMorale = doc.createElement("intlmorale");
+                newIntlMorale.appendChild(doc.createTextNode("0"));
+                Element newIntlAlchemical = doc.createElement("intlalchemical");
+                newIntlAlchemical.appendChild(doc.createTextNode("0"));
+                Element newIntlInherent = doc.createElement("intlinherent");
+                newIntlInherent.appendChild(doc.createTextNode("0"));
+                Element newIntlOther = doc.createElement("intlother");
+                newIntlOther.appendChild(doc.createTextNode("0"));
+
+
+                Element newWisEnhancement = doc.createElement("wisenhancement");
+                newWisEnhancement.appendChild(doc.createTextNode("0"));
+                Element newWisMorale = doc.createElement("wismorale");
+                newWisMorale.appendChild(doc.createTextNode("0"));
+                Element newWisAlchemical = doc.createElement("wisalchemical");
+                newWisAlchemical.appendChild(doc.createTextNode("0"));
+                Element newWisInherent = doc.createElement("wisinherent");
+                newWisInherent.appendChild(doc.createTextNode("0"));
+                Element newWisOther = doc.createElement("wisother");
+                newWisOther.appendChild(doc.createTextNode("0"));
+
+                Element newChaEnhancement = doc.createElement("chaenhancement");
+                newChaEnhancement.appendChild(doc.createTextNode("0"));
+                Element newChaMorale = doc.createElement("chamorale");
+                newChaMorale.appendChild(doc.createTextNode("0"));
+                Element newChaAlchemical = doc.createElement("chaalchemical");
+                newChaAlchemical.appendChild(doc.createTextNode("0"));
+                Element newChaInherent = doc.createElement("chainherent");
+                newChaInherent.appendChild(doc.createTextNode("0"));
+                Element newChaOther = doc.createElement("chaother");
+                newChaOther.appendChild(doc.createTextNode("0"));
+
 
                 Element newToHitMorale = doc.createElement("tohitmorale");
                 newToHitMorale.appendChild(doc.createTextNode("0"));
@@ -270,6 +328,9 @@ public class NewBuildActivity extends AppCompatActivity
                 newBuild.appendChild(newStr);
                 newBuild.appendChild(newDex);
                 newBuild.appendChild(newCon);
+                newBuild.appendChild(newIntl);
+                newBuild.appendChild(newWis);
+                newBuild.appendChild(newCha);
 
                 newBuild.appendChild(newStrEnhancement);
                 newBuild.appendChild(newStrMorale);
@@ -291,6 +352,24 @@ public class NewBuildActivity extends AppCompatActivity
                 newBuild.appendChild(newConAlchemical);
                 newBuild.appendChild(newConInherent);
                 newBuild.appendChild(newConOther);
+
+                newBuild.appendChild(newIntlEnhancement);
+                newBuild.appendChild(newIntlMorale);
+                newBuild.appendChild(newIntlAlchemical);
+                newBuild.appendChild(newIntlInherent);
+                newBuild.appendChild(newIntlOther);
+
+                newBuild.appendChild(newWisEnhancement);
+                newBuild.appendChild(newWisMorale);
+                newBuild.appendChild(newWisAlchemical);
+                newBuild.appendChild(newWisInherent);
+                newBuild.appendChild(newWisOther);
+
+                newBuild.appendChild(newChaEnhancement);
+                newBuild.appendChild(newChaMorale);
+                newBuild.appendChild(newChaAlchemical);
+                newBuild.appendChild(newChaInherent);
+                newBuild.appendChild(newChaOther);
 
                 newBuild.appendChild(newToHitMorale);
                 newBuild.appendChild(newToHitLuck);
@@ -357,6 +436,13 @@ public class NewBuildActivity extends AppCompatActivity
                 newDex.appendChild(doc.createTextNode(Integer.toString(dex)));
                 Element newCon = doc.createElement("con");
                 newCon.appendChild(doc.createTextNode(Integer.toString(con)));
+                Element newIntl = doc.createElement("intl");
+                newIntl.appendChild(doc.createTextNode(Integer.toString(intl)));
+                Element newWis = doc.createElement("wis");
+                newWis.appendChild(doc.createTextNode(Integer.toString(wis)));
+                Element newCha = doc.createElement("cha");
+                newCha.appendChild(doc.createTextNode(Integer.toString(cha)));
+
 
 
 
@@ -398,6 +484,39 @@ public class NewBuildActivity extends AppCompatActivity
                 newConInherent.appendChild(doc.createTextNode("0"));
                 Element newConOther = doc.createElement("conother");
                 newConOther.appendChild(doc.createTextNode("0"));
+
+                Element newIntlEnhancement = doc.createElement("intlenhancement");
+                newIntlEnhancement.appendChild(doc.createTextNode("0"));
+                Element newIntlMorale = doc.createElement("intlmorale");
+                newIntlMorale.appendChild(doc.createTextNode("0"));
+                Element newIntlAlchemical = doc.createElement("intlalchemical");
+                newIntlAlchemical.appendChild(doc.createTextNode("0"));
+                Element newIntlInherent = doc.createElement("intlinherent");
+                newIntlInherent.appendChild(doc.createTextNode("0"));
+                Element newIntlOther = doc.createElement("intlother");
+                newIntlOther.appendChild(doc.createTextNode("0"));
+
+                Element newWisEnhancement = doc.createElement("wisenhancement");
+                newWisEnhancement.appendChild(doc.createTextNode("0"));
+                Element newWisMorale = doc.createElement("wismorale");
+                newWisMorale.appendChild(doc.createTextNode("0"));
+                Element newWisAlchemical = doc.createElement("wisalchemical");
+                newWisAlchemical.appendChild(doc.createTextNode("0"));
+                Element newWisInherent = doc.createElement("wisinherent");
+                newWisInherent.appendChild(doc.createTextNode("0"));
+                Element newWisOther = doc.createElement("wisother");
+                newWisOther.appendChild(doc.createTextNode("0"));
+
+                Element newChaEnhancement = doc.createElement("chaenhancement");
+                newChaEnhancement.appendChild(doc.createTextNode("0"));
+                Element newChaMorale = doc.createElement("chamorale");
+                newChaMorale.appendChild(doc.createTextNode("0"));
+                Element newChaAlchemical = doc.createElement("chaalchemical");
+                newChaAlchemical.appendChild(doc.createTextNode("0"));
+                Element newChaInherent = doc.createElement("chainherent");
+                newChaInherent.appendChild(doc.createTextNode("0"));
+                Element newChaOther = doc.createElement("chaother");
+                newChaOther.appendChild(doc.createTextNode("0"));
 
                 Element newToHitMorale = doc.createElement("tohitmorale");
                 newToHitMorale.appendChild(doc.createTextNode("0"));
@@ -453,6 +572,9 @@ public class NewBuildActivity extends AppCompatActivity
                 newBuild.appendChild(newStr);
                 newBuild.appendChild(newDex);
                 newBuild.appendChild(newCon);
+                newBuild.appendChild(newIntl);
+                newBuild.appendChild(newWis);
+                newBuild.appendChild(newCha);
 
                 newBuild.appendChild(newStrEnhancement);
                 newBuild.appendChild(newStrMorale);
@@ -474,6 +596,24 @@ public class NewBuildActivity extends AppCompatActivity
                 newBuild.appendChild(newConAlchemical);
                 newBuild.appendChild(newConInherent);
                 newBuild.appendChild(newConOther);
+
+                newBuild.appendChild(newIntlEnhancement);
+                newBuild.appendChild(newIntlMorale);
+                newBuild.appendChild(newIntlAlchemical);
+                newBuild.appendChild(newIntlInherent);
+                newBuild.appendChild(newIntlOther);
+
+                newBuild.appendChild(newWisEnhancement);
+                newBuild.appendChild(newWisMorale);
+                newBuild.appendChild(newWisAlchemical);
+                newBuild.appendChild(newWisInherent);
+                newBuild.appendChild(newWisOther);
+
+                newBuild.appendChild(newChaEnhancement);
+                newBuild.appendChild(newChaMorale);
+                newBuild.appendChild(newChaAlchemical);
+                newBuild.appendChild(newChaInherent);
+                newBuild.appendChild(newChaOther);
 
                 newBuild.appendChild(newToHitMorale);
                 newBuild.appendChild(newToHitLuck);
