@@ -22,7 +22,10 @@ import javax.xml.parsers.*;
 import org.xml.sax.*;
 
 
-
+/*class Build contains all statistics of a single
+ *character. serializable is needed to pass the class
+ *between activities, it does not do anything else
+*/
 public class Build implements Serializable
 {
     
@@ -106,11 +109,19 @@ public class Build implements Serializable
     public int acSacred;
     public int acShield;
     public int acDeflection;
+    public int acInsight;
     public int acUntyped;
     public int acOther;
     public int acDexMax;
     public int acSize;
     
+    //variables that allow to add other modifiers.
+    public int acMoreButton1;
+    public int acMoreButton2;
+    public String acMoreField1;
+    public String acMoreField2;
+    
+    //default constructor, initializes to default values
     public Build(){
         
         this.name = "";
@@ -193,14 +204,22 @@ public class Build implements Serializable
         this.acSacred = 0;
         this.acShield = 0;
         this.acDeflection = 0;
+        this.acInsight = 0;
         this.acUntyped = 0;
         this.acOther = 0;
         this.acDexMax = -1;
         this.acSize = 0;
+        
+        this.acMoreButton1 = 0;
+        this.acMoreButton2 = 0;
+        this.acMoreField1 = "";
+        this.acMoreField2 = "";
+        
+        
     };
     
     
-    //field initialization
+    //base field initialization, needed for new build creation
     public Build initialize
     (String name, String playableClass, int level, int bab,
      int baseHP, int str, int dex, int con, int intl, int wis, int cha)
@@ -215,6 +234,8 @@ public class Build implements Serializable
         return returnBuild;
     }
     
+    
+    // changes all build fields
     public Build fullInitialize
     (String name, String playableClass, int level, int bab, int baseHP, 
      int str, int strEnhancement, int strMorale, int strSize, int strAlchemical,
@@ -230,7 +251,8 @@ public class Build implements Serializable
      int dmgMorale, int dmgLuck,  int dmgSacred,
      int dmgUntyped, int dmgOther, int acArmor, int acNatural,
      int acNaturalEnhancement, int acSacred, int acShield, int acDeflection,
-     int acUntyped, int acOther, int acDexMax, int acSize)
+     int acInsight, int acUntyped, int acOther, int acDexMax, int acSize,
+     int acMoreButton1, int acMoreButton2, String acMoreField1, String acMoreField2)
     {
         Build returnBuild = new Build();
         
@@ -304,15 +326,21 @@ public class Build implements Serializable
         returnBuild.acSacred = acSacred;
         returnBuild.acShield = acShield;
         returnBuild.acDeflection = acDeflection;
+        returnBuild.acInsight = acInsight;
         returnBuild.acUntyped = acUntyped;
         returnBuild.acOther = acOther;
         returnBuild.acDexMax = acDexMax;
         returnBuild.acSize = acSize;
         
+        returnBuild.acMoreButton1 = acMoreButton1;
+        returnBuild.acMoreButton2 = acMoreButton2;
+        returnBuild.acMoreField1 = acMoreField1;
+        returnBuild.acMoreField2 = acMoreField2;
+        
         return returnBuild;
     }
     
-    
+    // gets str modifier
     public int getStrModifier ()
     {
         double castedStr = 
@@ -326,6 +354,7 @@ public class Build implements Serializable
         return (int)(Math.floor(castedStr/2.0));
     }
     
+    //gets sum of strength
     public int getStrength ()
     {
         return this.str +
@@ -337,6 +366,7 @@ public class Build implements Serializable
             this.strOther;
     }
     
+    //gets dex modifier
     public int getDexModifier ()
     {
         double castedDex =      
@@ -350,6 +380,7 @@ public class Build implements Serializable
         return (int)(Math.floor(castedDex/2.0));
     }
     
+    //gets sum of dex
     public int getDexterity ()
     {
         return this.dex +
@@ -361,6 +392,7 @@ public class Build implements Serializable
             this.dexOther;
     }
     
+    //gets con modifier
     public int getConModifier ()
     {
         double castedCon = 
@@ -374,6 +406,7 @@ public class Build implements Serializable
         return (int)(Math.floor(castedCon/2.0));
     }
     
+    //gets sum of con
     public int getConstitution ()
     {
         return this.con +
@@ -384,7 +417,8 @@ public class Build implements Serializable
             this.conInherent +
             this.conOther;
     }
-
+    
+    //gets int modifier
     public int getIntlModifier ()
     {
         double castedIntl =
@@ -396,7 +430,8 @@ public class Build implements Serializable
                         this.intlOther -10;
         return (int)(Math.floor(castedIntl/2.0));
     }
-
+    
+    //gets sum of int
     public int getIntelligence ()
     {
         return this.intl +
@@ -406,7 +441,8 @@ public class Build implements Serializable
                 this.intlInherent +
                 this.intlOther;
     }
-
+    
+    //gets wis modifier
     public int getWisModifier ()
     {
         double castedWis =
@@ -419,6 +455,7 @@ public class Build implements Serializable
         return (int)(Math.floor(castedWis/2.0));
     }
 
+    //gets sum of wis
     public int getWisdom ()
     {
         return this.wis +
@@ -429,6 +466,7 @@ public class Build implements Serializable
                 this.wisOther;
     }
 
+    //gets cha modifier
     public int getChaModifier ()
     {
         double castedCha =
@@ -440,7 +478,8 @@ public class Build implements Serializable
                         this.chaOther -10;
         return (int)(Math.floor(castedCha/2.0));
     }
-
+    
+    //gets sum of cha
     public int getCharisma ()
     {
         return this.cha +
@@ -451,6 +490,13 @@ public class Build implements Serializable
                 this.chaOther;
     }
 
+    /*gets total hp.
+    NOTE: the field baseHP is supposed to contain
+    the hit points MODIFIED by base constitution, racials
+    con modifiers, and favored class bonus. This 
+    function calculates the VARIATION due to other
+    modifiers
+    */
     public int getTotalHP ()
     {
         return this.baseHP + 
@@ -459,6 +505,7 @@ public class Build implements Serializable
             (int)(Math.floor((double)(this.con-10)/2.0)));
     }
     
+    // gets total to hit bonus WITHOUT enhancement bonus
     public int getTotalToHit()
     {
         return 
@@ -470,6 +517,7 @@ public class Build implements Serializable
                this.toHitOther;
     }
     
+    //geta total damage bonus WITHOUT enhancement bonus
     public int getTotalDmgBonus()
     {
         return
@@ -479,7 +527,7 @@ public class Build implements Serializable
                 this.dmgUntyped+
                 this.dmgOther;
     }
-    
+    //gets total AC WITHOUT "more" bonuses
     public int getTotalAC()
     {
         int dexMax = 100;
@@ -495,42 +543,16 @@ public class Build implements Serializable
             this.acSacred +
             this.acShield +
             this.acDeflection +
+            this.acInsight +
             this.acUntyped +
             this.acOther +
             this.acSize;
     }
     
-    public int getTotalACTouch()
-    {
-        int dexMax = 100;
-        if(this.acDexMax != -1)
-        {
-            dexMax = this.acDexMax;
-        }
-        return 10 +
-            Math.min(this.getDexModifier(),dexMax) +        
-            this.acSacred +          
-            this.acDeflection +
-            this.acUntyped +
-            this.acOther +
-            this.acSize;
-    }
     
-    public int getTotalACFlatFooted()
-    {
-        
-        return 10 +
-            
-            this.acArmor +
-            this.acNatural +
-            this.acNaturalEnhancement +
-            this.acSacred +
-            this.acShield +
-            this.acDeflection +
-            this.acOther +
-            this.acSize;
-    }
-    
+    //reads from database the build with name buildname
+    //and returns a build with the read fields. returns an empty build
+    //if the build could not be found
     public Build readBuildXmlFile (Context ctx, String buildName)
     {
         Build useless = new Build();
@@ -598,10 +620,15 @@ public class Build implements Serializable
         int acSacred = 0;
         int acShield = 0;
         int acDeflection = 0;
+        int acInsight = 0;
         int acUntyped = 0;
         int acSize = 0;
         int acOther = 0;
         int acDexMax = -1;
+        int acMoreButton1 = 0;
+        int acMoreButton2 = 0;
+        String acMoreField1 = "";
+        String acMoreField2 = "";
         
         try
         {           
@@ -709,11 +736,17 @@ public class Build implements Serializable
                           acSacred = Integer.parseInt(eElement.getElementsByTagName("acsacred").item(0).getTextContent());
                           acShield = Integer.parseInt(eElement.getElementsByTagName("acshield").item(0).getTextContent());
                           acDeflection = Integer.parseInt(eElement.getElementsByTagName("acdeflection").item(0).getTextContent());
+                          acInsight = Integer.parseInt(eElement.getElementsByTagName("acinsight").item(0).getTextContent());
                           acUntyped = Integer.parseInt(eElement.getElementsByTagName("acuntyped").item(0).getTextContent());
                           acSize = Integer.parseInt(eElement.getElementsByTagName("acsize").item(0).getTextContent());
                           acOther = Integer.parseInt(eElement.getElementsByTagName("acother").item(0).getTextContent());
                           acDexMax = Integer.parseInt(eElement.getElementsByTagName("acdexmax").item(0).getTextContent());
                           
+                          acMoreButton1 = Integer.parseInt(eElement.getElementsByTagName("acmorebutton1").item(0).getTextContent());
+                          acMoreButton2 = Integer.parseInt(eElement.getElementsByTagName("acmorebutton2").item(0).getTextContent());
+                          acMoreField1 = eElement.getElementsByTagName("acmorefield1").item(0).getTextContent();
+                          acMoreField2 = eElement.getElementsByTagName("acmorefield2").item(0).getTextContent();
+                        
                         
                           found = true;
                           System.out.println(found);
@@ -741,8 +774,9 @@ public class Build implements Serializable
                                                      toHitSacred, toHitSize, toHitUntyped, toHitOther,
                                                      dmgMorale, dmgLuck, dmgSacred,
                                                      dmgUntyped, dmgOther, acArmor, acNatural,
-                                                     acNaturalEnhancement, acSacred, acShield, acDeflection,
-                                                     acUntyped, acOther, acDexMax, acSize);
+                                                     acNaturalEnhancement, acSacred, acShield, acDeflection, acInsight,
+                                                     acUntyped, acOther, acDexMax, acSize, acMoreButton1,acMoreButton2,
+                                                     acMoreField1,acMoreField2);
                 
             }
         }  // end try
@@ -757,6 +791,8 @@ public class Build implements Serializable
         
     }
     
+    //updates the fields of the build in database with name "name"
+    //newname is the new build's name. then returns the build.
     public Build updateBuildInXml(Context ctx,
                                   String name, String newname, String playableClass, int level, int bab, int baseHP, 
                                   int str, int strEnhancement, int strMorale, int strSize, int strAlchemical,
@@ -770,8 +806,9 @@ public class Build implements Serializable
                                   int toHitMorale, int toHitLuck, int toHitSacred, int toHitSize, int toHitUntyped,
                                   int toHitOther, int dmgMorale, int dmgLuck,  int dmgSacred, int dmgUntyped,
                                   int dmgOther, int acArmor, int acNatural, int acNaturalEnhancement,
-                                  int acSacred, int acShield, int acDeflection, int acUntyped, int acOther,
-                                  int acDexMax, int acSize)
+                                  int acSacred, int acShield, int acDeflection, int acInsight, int acUntyped, int acOther,
+                                  int acDexMax, int acSize, int acMoreButton1, int acMoreButton2,
+                                  String acMoreField1, String acMoreField2)
     {
         Build useless = new Build();
         Build returnBuild;
@@ -884,10 +921,16 @@ public class Build implements Serializable
                         eElement.getElementsByTagName("acsacred").item(0).setTextContent(Integer.toString(acSacred));
                         eElement.getElementsByTagName("acshield").item(0).setTextContent(Integer.toString(acShield));
                         eElement.getElementsByTagName("acdeflection").item(0).setTextContent(Integer.toString(acDeflection));                      
+                        eElement.getElementsByTagName("acinsight").item(0).setTextContent(Integer.toString(acInsight));
                         eElement.getElementsByTagName("acuntyped").item(0).setTextContent(Integer.toString(acUntyped));
                         eElement.getElementsByTagName("acsize").item(0).setTextContent(Integer.toString(acSize));
                         eElement.getElementsByTagName("acother").item(0).setTextContent(Integer.toString(acOther));         
                         eElement.getElementsByTagName("acdexmax").item(0).setTextContent(Integer.toString(acDexMax));
+                        
+                        eElement.getElementsByTagName("acmorebutton1").item(0).setTextContent(Integer.toString(acMoreButton1));
+                        eElement.getElementsByTagName("acmorebutton2").item(0).setTextContent(Integer.toString(acMoreButton2));
+                        eElement.getElementsByTagName("acmorefield1").item(0).setTextContent(acMoreField1);         
+                        eElement.getElementsByTagName("acmorefield2").item(0).setTextContent(acMoreField2);
                         
            
                     }    // end if name = passed name                                              
@@ -917,7 +960,8 @@ public class Build implements Serializable
                                                  dmgMorale, dmgLuck,  dmgSacred,
                                                  dmgUntyped, dmgOther, acArmor, acNatural,
                                                  acNaturalEnhancement, acSacred, acShield, acDeflection,
-                                                 acUntyped, acOther, acDexMax, acSize);
+                                                 acInsight, acUntyped, acOther, acDexMax, acSize,
+                                                 acMoreButton1, acMoreButton2, acMoreField1, acMoreField2);
 
             
         }  // end try

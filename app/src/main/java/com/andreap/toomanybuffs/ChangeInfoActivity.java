@@ -24,7 +24,7 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import android.support.v4.media.session.*;
+import android.support.v4.*;
 import org.apache.http.util.*;
 import org.w3c.dom.*;
 
@@ -128,10 +128,11 @@ public class ChangeInfoActivity extends AppCompatActivity
              staticBuildChangeInfo.conEnhancement, staticBuildChangeInfo.conMorale, staticBuildChangeInfo.conSize, staticBuildChangeInfo.conAlchemical,
              staticBuildChangeInfo.conInherent, staticBuildChangeInfo.conOther, intl, staticBuildChangeInfo.intlEnhancement, staticBuildChangeInfo.intlMorale, staticBuildChangeInfo.intlAlchemical, staticBuildChangeInfo.intlInherent, staticBuildChangeInfo.intlOther, wis, staticBuildChangeInfo.wisEnhancement, staticBuildChangeInfo.wisMorale, staticBuildChangeInfo.wisAlchemical, staticBuildChangeInfo.wisInherent, staticBuildChangeInfo.wisOther, cha, staticBuildChangeInfo.chaEnhancement, staticBuildChangeInfo.chaMorale, staticBuildChangeInfo.chaAlchemical, staticBuildChangeInfo.chaInherent, staticBuildChangeInfo.chaOther, staticBuildChangeInfo.toHitMorale, staticBuildChangeInfo.toHitLuck,
              staticBuildChangeInfo.toHitSacred, staticBuildChangeInfo.toHitSize, staticBuildChangeInfo.toHitUntyped, staticBuildChangeInfo.toHitOther,
-             staticBuildChangeInfo.dmgMorale, staticBuildChangeInfo.dmgLuck, staticBuildChangeInfo. dmgSacred,
+             staticBuildChangeInfo.dmgMorale, staticBuildChangeInfo.dmgLuck, staticBuildChangeInfo.dmgSacred,
              staticBuildChangeInfo.dmgUntyped, staticBuildChangeInfo.dmgOther, staticBuildChangeInfo.acArmor, staticBuildChangeInfo.acNatural,
              staticBuildChangeInfo.acNaturalEnhancement, staticBuildChangeInfo.acSacred, staticBuildChangeInfo.acShield, staticBuildChangeInfo.acDeflection,
-             staticBuildChangeInfo.acUntyped, staticBuildChangeInfo.acOther, staticBuildChangeInfo.acDexMax, staticBuildChangeInfo.acSize);
+             staticBuildChangeInfo.acInsight, staticBuildChangeInfo.acUntyped, staticBuildChangeInfo.acOther, staticBuildChangeInfo.acDexMax, staticBuildChangeInfo.acSize,
+             staticBuildChangeInfo.acMoreButton1, staticBuildChangeInfo.acMoreButton2, staticBuildChangeInfo.acMoreField1, staticBuildChangeInfo.acMoreField2);
 
              
            

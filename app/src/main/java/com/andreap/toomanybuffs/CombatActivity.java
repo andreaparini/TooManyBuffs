@@ -67,6 +67,8 @@ public class CombatActivity extends AppCompatActivity
         int acNumber = staticBuild.getTotalAC();
         int hpNumber = staticBuild.getTotalHP();
         
+        
+        
         String sStrMod = new String(Integer.toString(strMod));
         String sDexMod = new String(Integer.toString(dexMod));
         String sConMod = new String(Integer.toString(conMod));
@@ -112,6 +114,56 @@ public class CombatActivity extends AppCompatActivity
         intelligenceMod.setText(sIntlMod);
         wisdomMod.setText(sWisMod);
         charismaMod.setText(sChaMod);
+        
+        
+        
+        if(staticBuild.acMoreButton1 == 1)
+        {        
+            if ((staticBuild.acMoreField1).equals("Strength"))
+            {
+                acNumber += staticBuild.getStrModifier();
+            }
+            else if ((staticBuild.acMoreField1).equals("Constitution"))
+            {
+                acNumber += staticBuild.getConModifier();
+            }
+            else if ((staticBuild.acMoreField1).equals("Intelligence"))
+            {
+                acNumber += staticBuild.getIntlModifier();
+            }
+            else if ((staticBuild.acMoreField1).equals("Wisdom"))
+            {
+                acNumber += staticBuild.getWisModifier();
+            }
+            else if ((staticBuild.acMoreField1).equals("Charisma"))
+            {
+                acNumber += staticBuild.getChaModifier();
+            }
+            
+            if(staticBuild.acMoreButton2 == 1)
+            {        
+                if ((staticBuild.acMoreField2).equals("Strength"))
+                {
+                    acNumber += staticBuild.getStrModifier();
+                }
+                else if ((staticBuild.acMoreField2).equals("Constitution"))
+                {
+                    acNumber += staticBuild.getConModifier();
+                }
+                else if ((staticBuild.acMoreField2).equals("Intelligence"))
+                {
+                    acNumber += staticBuild.getIntlModifier();
+                }
+                else if ((staticBuild.acMoreField2).equals("Wisdom"))
+                {
+                    acNumber += staticBuild.getWisModifier();
+                }
+                else if ((staticBuild.acMoreField2).equals("Charisma"))
+                {
+                    acNumber += staticBuild.getChaModifier();
+                }
+            }
+        }
         
         AC.setText(Integer.toString(acNumber));
         

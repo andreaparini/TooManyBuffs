@@ -52,7 +52,7 @@ public class CustomizationActivity extends AppCompatActivity
         ImageView intlModIView = (ImageView) findViewById(R.id.customizationImageView7);
         ImageView wisModIView = (ImageView) findViewById(R.id.customizationImageView8);
         ImageView chaModIView = (ImageView) findViewById(R.id.customizationImageView9);
-        
+
         strModView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v)
@@ -150,7 +150,7 @@ public class CustomizationActivity extends AppCompatActivity
                     {
                         chaToShow.setVisibility(View.VISIBLE);
                     }
-                        else
+                    else
                     {
                         chaToShow.setVisibility(View.GONE);
                     }
@@ -211,7 +211,7 @@ public class CustomizationActivity extends AppCompatActivity
 
                 }
             });    
-            
+
         strModIView.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v)
@@ -425,19 +425,30 @@ public class CustomizationActivity extends AppCompatActivity
         Spinner acSacred = (Spinner) findViewById(R.id.customAcSacred);
         Spinner acShield = (Spinner) findViewById(R.id.customAcShield);
         Spinner acDeflection = (Spinner) findViewById(R.id.customAcDeflection);
+        Spinner acInsight = (Spinner) findViewById(R.id.customAcInsight);
         Spinner acUntyped = (Spinner) findViewById(R.id.customAcUntyped);
         Spinner acOther = (Spinner) findViewById(R.id.customAcOther);     
         Spinner acDexMax = (Spinner) findViewById(R.id.customAcDexMax);
         Spinner acSize = (Spinner) findViewById(R.id.customAcSize);
-        
+
+        CheckBox acMoreBox1 = (CheckBox) findViewById(R.id.customAcMoreBox1);
+        CheckBox acMoreBox2 = (CheckBox) findViewById(R.id.customAcMoreBox2);
+        Spinner acMoreField1 = (Spinner) findViewById(R.id.customAcMoreField1);
+        Spinner acMoreField2 = (Spinner) findViewById(R.id.customAcMoreField2);
+
         ArrayAdapter<CharSequence> custom015Adapter = ArrayAdapter.createFromResource
         (this, R.array.numbers15, android.R.layout.simple_spinner_item); 
 
         ArrayAdapter<CharSequence> customDexMaxAdapter = ArrayAdapter.createFromResource
         (this, R.array.dexmax, android.R.layout.simple_spinner_item);
 
+        ArrayAdapter<CharSequence> customAcMoreAdapter = ArrayAdapter.createFromResource
+        (this, R.array.addmoreac, android.R.layout.simple_spinner_item);
+
+
         custom015Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         customDexMaxAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        customAcMoreAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         strMorale.setAdapter(custom015Adapter);
         strEnhancement.setAdapter(custom015Adapter);
@@ -497,13 +508,18 @@ public class CustomizationActivity extends AppCompatActivity
         acSacred.setAdapter(custom015Adapter);
         acShield.setAdapter(custom015Adapter);
         acDeflection.setAdapter(custom015Adapter);
+        acInsight.setAdapter(custom015Adapter);
         acUntyped.setAdapter(custom015Adapter); 
         acOther.setAdapter(custom015Adapter);
         acDexMax.setAdapter(customDexMaxAdapter);
         acSize.setAdapter(custom015Adapter);
 
-        buildToSpinner();
+        acMoreField1.setAdapter(customAcMoreAdapter);
+        acMoreField2.setAdapter(customAcMoreAdapter);  
 
+
+        buildToSpinner();
+    
     }
 
     @Override
@@ -520,7 +536,61 @@ public class CustomizationActivity extends AppCompatActivity
         }
 
     }
+    
+    
+    public void onAcMoreCheckboxClicked(View view)
+    {
+        // Is the view now checked?
+        boolean checked = ((CheckBox) view).isChecked();
 
+        // Check which checkbox was clicked
+        switch (view.getId())
+        {
+            case R.id.customAcMoreBox1:
+                if (checked)
+                {
+                    Spinner acMoreField1 = findViewById(R.id.customAcMoreField1);
+                    acMoreField1.setVisibility(View.VISIBLE);
+                    CheckBox acMoreBox2 = findViewById(R.id.customAcMoreBox2);
+                    acMoreBox2.setVisibility(View.VISIBLE);
+                    TextView acMoreText2 = findViewById(R.id.customAcMoreText2);
+                    acMoreText2.setVisibility(View.VISIBLE);
+                }           
+                else
+                {
+                    Spinner acMoreField1 = findViewById(R.id.customAcMoreField1);
+                    acMoreField1.setVisibility(View.GONE);
+                    CheckBox acMoreBox2 = findViewById(R.id.customAcMoreBox2);
+                    acMoreBox2.setVisibility(View.GONE);
+                    Spinner acMoreField2 = findViewById(R.id.customAcMoreField2);
+                    acMoreField2.setVisibility(View.GONE);
+                    
+                    acMoreBox2.setChecked(false);
+                    
+                    TextView acMoreText2 = findViewById(R.id.customAcMoreText2);
+                    acMoreText2.setVisibility(View.GONE);
+                }               
+                break;
+                
+            case R.id.customAcMoreBox2:
+                if (checked)
+                {
+                    Spinner acMoreField2 = findViewById(R.id.customAcMoreField2);
+                    acMoreField2.setVisibility(View.VISIBLE);
+                    
+                    
+                }
+                else
+                {
+                    Spinner acMoreField2 = findViewById(R.id.customAcMoreField2);
+                    acMoreField2.setVisibility(View.GONE);
+                    
+                    
+                }              
+                break;
+        }
+    }
+    
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -554,7 +624,8 @@ public class CustomizationActivity extends AppCompatActivity
                  staticBuild.dmgMorale, staticBuild.dmgLuck, staticBuild. dmgSacred,
                  staticBuild.dmgUntyped, staticBuild.dmgOther, staticBuild.acArmor, staticBuild.acNatural,
                  staticBuild.acNaturalEnhancement, staticBuild.acSacred, staticBuild.acShield, staticBuild.acDeflection,
-                 staticBuild.acUntyped, staticBuild.acOther, staticBuild.acDexMax, staticBuild.acSize);
+                 staticBuild.acInsight, staticBuild.acUntyped, staticBuild.acOther, staticBuild.acDexMax, staticBuild.acSize,
+                 staticBuild.acMoreButton1, staticBuild.acMoreButton2, staticBuild.acMoreField1, staticBuild.acMoreField2);
 
                 buildToSpinner();                
 
@@ -737,6 +808,7 @@ public class CustomizationActivity extends AppCompatActivity
         Spinner acSacred = (Spinner) findViewById(R.id.customAcSacred);
         Spinner acShield = (Spinner) findViewById(R.id.customAcShield);
         Spinner acDeflection = (Spinner) findViewById(R.id.customAcDeflection);
+        Spinner acInsight = (Spinner) findViewById(R.id.customAcInsight);
         Spinner acUntyped = (Spinner) findViewById(R.id.customAcUntyped);
         Spinner acOther = (Spinner) findViewById(R.id.customAcOther);         
         Spinner acSize = (Spinner) findViewById(R.id.customAcSize);
@@ -748,6 +820,7 @@ public class CustomizationActivity extends AppCompatActivity
         staticBuild.acSacred = Integer.parseInt(String.valueOf(acSacred.getSelectedItem()));
         staticBuild.acShield = Integer.parseInt(String.valueOf(acShield.getSelectedItem()));
         staticBuild.acDeflection = Integer.parseInt(String.valueOf(acDeflection.getSelectedItem()));
+        staticBuild.acInsight = Integer.parseInt(String.valueOf(acInsight.getSelectedItem()));
         staticBuild.acUntyped = Integer.parseInt(String.valueOf(acUntyped.getSelectedItem()));
         staticBuild.acSize = Integer.parseInt(String.valueOf(acSize.getSelectedItem()));
         staticBuild.acOther = Integer.parseInt(String.valueOf(acOther.getSelectedItem()));
@@ -761,7 +834,36 @@ public class CustomizationActivity extends AppCompatActivity
         {
             staticBuild.acDexMax = Integer.parseInt(dexMax);
         }
-
+        
+        CheckBox acMoreBox1 = (CheckBox) findViewById(R.id.customAcMoreBox1);
+        CheckBox acMoreBox2 = (CheckBox) findViewById(R.id.customAcMoreBox2);
+        Spinner acMoreField1 = (Spinner) findViewById(R.id.customAcMoreField1);
+        Spinner acMoreField2 = (Spinner) findViewById(R.id.customAcMoreField2);
+        
+        
+        if(acMoreBox1.isChecked())
+        {
+            staticBuild.acMoreButton1 = 1;
+            staticBuild.acMoreField1 = String.valueOf(acMoreField1.getSelectedItem());
+        }
+        else
+        {
+            staticBuild.acMoreButton1 = 0;
+            staticBuild.acMoreField1 = "None";
+        }
+            
+        if(acMoreBox2.isChecked())
+        {
+            staticBuild.acMoreButton2 = 1;
+            staticBuild.acMoreField2 = String.valueOf(acMoreField2.getSelectedItem());
+        }
+        else
+        {
+            staticBuild.acMoreButton2 = 0;
+            staticBuild.acMoreField2 = "None";
+        }       
+        
+        
     }
 
     public void buildToSpinner()
@@ -775,6 +877,18 @@ public class CustomizationActivity extends AppCompatActivity
         classView.setText(staticBuild.playableClass);
         levelView.setText(Integer.toString(staticBuild.level));
 
+        ArrayAdapter<CharSequence> custom015Adapter = ArrayAdapter.createFromResource
+        (this, R.array.numbers15, android.R.layout.simple_spinner_item);      
+        ArrayAdapter<CharSequence> customDexMaxAdapter = ArrayAdapter.createFromResource
+        (this, R.array.dexmax, android.R.layout.simple_spinner_item);         
+        ArrayAdapter<CharSequence> customAcMoreAdapter = ArrayAdapter.createFromResource
+        (this, R.array.addmoreac, android.R.layout.simple_spinner_item);      
+        
+        custom015Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        customDexMaxAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        customAcMoreAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        
+        
         //strength
 
         
@@ -786,12 +900,7 @@ public class CustomizationActivity extends AppCompatActivity
         Spinner strOther = (Spinner) findViewById(R.id.customStrOther);         
 
 
-        ArrayAdapter<CharSequence> custom015Adapter = ArrayAdapter.createFromResource
-        (this, R.array.numbers15, android.R.layout.simple_spinner_item);      
-        ArrayAdapter<CharSequence> customDexMaxAdapter = ArrayAdapter.createFromResource
-        (this, R.array.dexmax, android.R.layout.simple_spinner_item);
-        custom015Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
+        
 
         strMorale.setAdapter(custom015Adapter);
         strEnhancement.setAdapter(custom015Adapter);
@@ -1038,6 +1147,7 @@ public class CustomizationActivity extends AppCompatActivity
         Spinner acSacred = (Spinner) findViewById(R.id.customAcSacred);
         Spinner acShield = (Spinner) findViewById(R.id.customAcShield);
         Spinner acDeflection = (Spinner) findViewById(R.id.customAcDeflection);
+        Spinner acInsight = (Spinner) findViewById(R.id.customAcInsight);
         Spinner acUntyped = (Spinner) findViewById(R.id.customAcUntyped);
         Spinner acOther = (Spinner) findViewById(R.id.customAcOther);         
         Spinner acSize = (Spinner) findViewById(R.id.customAcSize);
@@ -1049,6 +1159,7 @@ public class CustomizationActivity extends AppCompatActivity
         acSacred.setAdapter(custom015Adapter);
         acShield.setAdapter(custom015Adapter);
         acDeflection.setAdapter(custom015Adapter);
+        acInsight.setAdapter(custom015Adapter);
         acUntyped.setAdapter(custom015Adapter); 
         acOther.setAdapter(custom015Adapter);
         acDexMax.setAdapter(customDexMaxAdapter);
@@ -1066,6 +1177,8 @@ public class CustomizationActivity extends AppCompatActivity
         acShield.setSelection(acShieldPos);       
         int acDeflectionPos = custom015Adapter.getPosition(Integer.toString(staticBuild.acDeflection));
         acDeflection.setSelection(acDeflectionPos);
+        int acInsightPos = custom015Adapter.getPosition(Integer.toString(staticBuild.acInsight));
+        acInsight.setSelection(acInsightPos);
         int acUntypedPos = custom015Adapter.getPosition(Integer.toString(staticBuild.acUntyped));
         acUntyped.setSelection(acUntypedPos);   
         int acSizePos = custom015Adapter.getPosition(Integer.toString(staticBuild.acSize));
@@ -1082,8 +1195,58 @@ public class CustomizationActivity extends AppCompatActivity
             acDexMax.setSelection(acDexMaxPos);
         }
 
+        CheckBox acMoreBox1 = (CheckBox) findViewById(R.id.customAcMoreBox1);
+        CheckBox acMoreBox2 = (CheckBox) findViewById(R.id.customAcMoreBox2);
+        Spinner acMoreField1 = (Spinner) findViewById(R.id.customAcMoreField1);
+        Spinner acMoreField2 = (Spinner) findViewById(R.id.customAcMoreField2);
+        TextView acMoreText2 = findViewById(R.id.customAcMoreText2);
+        if(staticBuild.acMoreButton1 == 1)
+        {                     
+            acMoreBox1.setChecked(true);
+                             
+            acMoreBox2.setVisibility(View.VISIBLE);
+            
+            acMoreField1.setVisibility(View.VISIBLE);           
+            
+            acMoreText2.setVisibility(View.VISIBLE);
+            
+                                                                
+        }       
+        else if(staticBuild.acMoreButton1 == 0)
+        {
+            acMoreBox1.setChecked(false);
+            acMoreBox2.setChecked(false);
+            
+            acMoreBox2.setVisibility(View.GONE);
+            acMoreText2.setVisibility(View.GONE);
+            acMoreField1.setVisibility(View.GONE);
+            acMoreField2.setVisibility(View.GONE);                
+            
+            
+        }
 
+        if(staticBuild.acMoreButton2 == 1)
+        {
+            acMoreField2.setVisibility(View.VISIBLE);     
+            
+            acMoreBox2.setChecked(true);
 
+               
+        }
+        else if (staticBuild.acMoreButton2 == 0)
+        {
+            acMoreBox2.setChecked(false);
+            
+            acMoreField2.setVisibility(View.GONE);        
+          
+        }       
+        acMoreField1.setAdapter(customAcMoreAdapter);
+        acMoreField2.setAdapter(customAcMoreAdapter);
+        
+        int acMoreField1Pos = customAcMoreAdapter.getPosition(staticBuild.acMoreField1);
+        acMoreField1.setSelection(acMoreField1Pos);             
+        int acMoreField2Pos = customAcMoreAdapter.getPosition(staticBuild.acMoreField2);
+        acMoreField2.setSelection(acMoreField2Pos);       
 
     }
 

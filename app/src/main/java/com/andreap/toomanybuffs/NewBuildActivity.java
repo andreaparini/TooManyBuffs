@@ -24,14 +24,17 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import android.support.v4.media.session.*;
+import android.support.v4.*;
 import org.apache.http.util.*;
 
+
+// this activity manages the creation of a new build
 public class NewBuildActivity extends AppCompatActivity
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        //nothing to do on creation
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newbuild);
         Toolbar main_toolbar = (Toolbar) findViewById(R.id.mainToolbar);
@@ -41,6 +44,11 @@ public class NewBuildActivity extends AppCompatActivity
         
     }
     
+    /* the create button reads all entered fields and writes to
+     * database a new build with the inserted values, and default
+     * values for the other ones. does not do anythin and throws a 
+     * toast message if one or more fields are missing
+     */
     public void onCreateBuildButtonClick(View view)
     {   
         EditText nameView = (EditText) findViewById(R.id.newbuildName);
@@ -55,6 +63,7 @@ public class NewBuildActivity extends AppCompatActivity
         EditText babView = (EditText) findViewById(R.id.newbuildBab);
         EditText hpView = (EditText) findViewById(R.id.newbuildBaseHP);
         
+        // if all fields are filled
         if( !nameView.getText().toString().equals("") && nameView.getText().toString().length() > 0 &&   
             !classView.getText().toString().equals("") && classView.getText().toString().length() > 0 &&
             !levelView.getText().toString().equals("") && levelView.getText().toString().length() > 0 &&
@@ -87,7 +96,8 @@ public class NewBuildActivity extends AppCompatActivity
             int cha = Integer.parseInt(chaString);
             int bab = Integer.parseInt(babString);
             int baseHp = Integer.parseInt(baseHpString);
-
+            
+            //trim to erase extra spaces
             name = name.trim();
             playClass = playClass.trim();
             levelString = levelString.trim();
@@ -100,6 +110,7 @@ public class NewBuildActivity extends AppCompatActivity
             babString = babString.trim();
             baseHpString = baseHpString.trim();
             
+            // if build does not exist adds the build to database
             if (!buildExistsXmlFile(this, name))
             {
                 addNewBuild(this, name, playClass, level, str, dex , con, 
@@ -108,6 +119,7 @@ public class NewBuildActivity extends AppCompatActivity
                 intent.putExtra("loadedBuild", name);
                 startActivity(intent);
             } else {
+                // else throws a message
                 Toast.makeText(this, 
                                "A build with this name already exists. Please use another name", 
                                Toast.LENGTH_LONG).show();
@@ -122,7 +134,7 @@ public class NewBuildActivity extends AppCompatActivity
         }
     }
     
-    
+    //menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -150,7 +162,7 @@ public class NewBuildActivity extends AppCompatActivity
     
 
 
-
+    //adds a new character build to the database
     public void addNewBuild (Context ctx, String name, String playClass,
                              int level, int str, int dex, int con, 
                              int intl, int wis, int cha,
@@ -160,6 +172,7 @@ public class NewBuildActivity extends AppCompatActivity
         try
         {         
             File xmldb = new File(getFilesDir()+"/build_db.xml");
+            // if database file already exists, appends the build
             if(xmldb.exists())
             {
                 DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
@@ -309,6 +322,8 @@ public class NewBuildActivity extends AppCompatActivity
                 newAcShield.appendChild(doc.createTextNode("0"));
                 Element newAcDeflection = doc.createElement("acdeflection");
                 newAcDeflection.appendChild(doc.createTextNode("0"));
+                Element newAcInsight = doc.createElement("acinsight");
+                newAcInsight.appendChild(doc.createTextNode("0"));
                 Element newAcUntyped = doc.createElement("acuntyped");
                 newAcUntyped.appendChild(doc.createTextNode("0"));
                 Element newAcSize = doc.createElement("acsize");
@@ -318,7 +333,15 @@ public class NewBuildActivity extends AppCompatActivity
                 Element newAcDexMax = doc.createElement("acdexmax");
                 newAcDexMax.appendChild(doc.createTextNode("-1")); 
                 
-
+                Element newAcMoreButton1 = doc.createElement("acmorebutton1");
+                newAcMoreButton1.appendChild(doc.createTextNode("0"));
+                Element newAcMoreButton2 = doc.createElement("acmorebutton2");
+                newAcMoreButton2.appendChild(doc.createTextNode("0"));
+                Element newAcMoreField1 = doc.createElement("acmorefield1");
+                newAcMoreField1.appendChild(doc.createTextNode("0"));
+                Element newAcMoreField2 = doc.createElement("acmorefield2");
+                newAcMoreField2.appendChild(doc.createTextNode("0"));
+                
 
                 newBuild.appendChild(newName);
                 newBuild.appendChild(newClass);
@@ -391,10 +414,16 @@ public class NewBuildActivity extends AppCompatActivity
                 newBuild.appendChild(newAcSacred);
                 newBuild.appendChild(newAcShield);
                 newBuild.appendChild(newAcDeflection);
+                newBuild.appendChild(newAcInsight);
                 newBuild.appendChild(newAcUntyped);
                 newBuild.appendChild(newAcSize);
                 newBuild.appendChild(newAcOther);
                 newBuild.appendChild(newAcDexMax);
+                
+                newBuild.appendChild(newAcMoreButton1);
+                newBuild.appendChild(newAcMoreButton2);
+                newBuild.appendChild(newAcMoreField1);
+                newBuild.appendChild(newAcMoreField2);
                 
                 
 
@@ -407,6 +436,7 @@ public class NewBuildActivity extends AppCompatActivity
             }
             else
             {
+                //if database file does not exist, creates it
                 DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
                 DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
 
@@ -554,6 +584,8 @@ public class NewBuildActivity extends AppCompatActivity
                 newAcShield.appendChild(doc.createTextNode("0"));
                 Element newAcDeflection = doc.createElement("acdeflection");
                 newAcDeflection.appendChild(doc.createTextNode("0"));
+                Element newAcInsight = doc.createElement("acinsight");
+                newAcInsight.appendChild(doc.createTextNode("0"));
                 Element newAcUntyped = doc.createElement("acuntyped");
                 newAcUntyped.appendChild(doc.createTextNode("0"));
                 Element newAcSize = doc.createElement("acsize");
@@ -563,7 +595,18 @@ public class NewBuildActivity extends AppCompatActivity
                 Element newAcDexMax = doc.createElement("acdexmax");
                 newAcDexMax.appendChild(doc.createTextNode("-1")); 
 
+                Element newAcMoreButton1 = doc.createElement("acmorebutton1");
+                newAcMoreButton1.appendChild(doc.createTextNode("0"));
+                Element newAcMoreButton2 = doc.createElement("acmorebutton2");
+                newAcMoreButton2.appendChild(doc.createTextNode("0"));
+                Element newAcMoreField1 = doc.createElement("acmorefield1");
+                newAcMoreField1.appendChild(doc.createTextNode("0"));
+                Element newAcMoreField2 = doc.createElement("acmorefield2");
+                newAcMoreField2.appendChild(doc.createTextNode("0"));
+                
 
+                
+                
                 newBuild.appendChild(newName);
                 newBuild.appendChild(newClass);
                 newBuild.appendChild(newLevel);
@@ -635,11 +678,16 @@ public class NewBuildActivity extends AppCompatActivity
                 newBuild.appendChild(newAcSacred);
                 newBuild.appendChild(newAcShield);
                 newBuild.appendChild(newAcDeflection);
+                newBuild.appendChild(newAcInsight);
                 newBuild.appendChild(newAcUntyped);
                 newBuild.appendChild(newAcSize);
                 newBuild.appendChild(newAcOther);          
                 newBuild.appendChild(newAcDexMax);
                 
+                newBuild.appendChild(newAcMoreButton1);
+                newBuild.appendChild(newAcMoreButton2);
+                newBuild.appendChild(newAcMoreField1);
+                newBuild.appendChild(newAcMoreField2);
 
                 // write the content into xml file
                 TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -677,7 +725,7 @@ public class NewBuildActivity extends AppCompatActivity
         return;
     }
     
-    
+    //returns true if a build with name buildname exists in the database, false otherwise
     public boolean buildExistsXmlFile (Context ctx, String buildName)
     {
         boolean found = false;
