@@ -47,6 +47,11 @@ public class ModifyAttackActivity extends AppCompatActivity
     static String stTWF = new String("");
     static String stCustomAttackBonus = new String("");
     static String stCustomDamageBonus = new String("");
+    static String stExtraToHitChecked = new String("");
+    static String stExtraDamageChecked = new String("");
+    static String stExtraToHit = new String("");
+    static String stExtraDamage = new String("");
+    
     
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -101,13 +106,29 @@ public class ModifyAttackActivity extends AppCompatActivity
         (this, R.array.attacktype, android.R.layout.simple_spinner_item);
         attackBasedOnAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         attackBasedOnSpinner.setAdapter(attackBasedOnAdapter);
-
+        
+        Spinner extraToHitSpinner = (Spinner) findViewById(R.id.modifyattackExtraToHitSpinner);       
+        ArrayAdapter<CharSequence> extraToHitAdapter = ArrayAdapter.createFromResource
+        (this, R.array.attacktype, android.R.layout.simple_spinner_item);
+        extraToHitAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        extraToHitSpinner.setAdapter(extraToHitAdapter);
+        
+        CheckBox extraToHitCheckbox = findViewById(R.id.modifyattackExtraToHitCheckBox);
+        
         Spinner damageBasedOnSpinner = (Spinner) findViewById(R.id.modifyattackDamageBasedOnSpinner);       
         ArrayAdapter<CharSequence> damageBasedOnAdapter = ArrayAdapter.createFromResource
         (this, R.array.damagetype, android.R.layout.simple_spinner_item);
         damageBasedOnAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         damageBasedOnSpinner.setAdapter(damageBasedOnAdapter);
 
+        Spinner extraDamageSpinner = (Spinner) findViewById(R.id.modifyattackExtraDamageSpinner);       
+        ArrayAdapter<CharSequence> extraDamageAdapter = ArrayAdapter.createFromResource
+        (this, R.array.damagetype, android.R.layout.simple_spinner_item);
+        extraDamageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        extraDamageSpinner.setAdapter(extraDamageAdapter);
+        
+        CheckBox extraDamageCheckbox = findViewById(R.id.modifyattackExtraDamageCheckBox);
+        
         Spinner iterativeAttacksSpinner = (Spinner) findViewById(R.id.modifyattackIterativeAttacksSpinner);       
         ArrayAdapter<CharSequence> iterativeAttacksAdapter = ArrayAdapter.createFromResource
         (this, R.array.iterativeattacks, android.R.layout.simple_spinner_item);
@@ -161,10 +182,56 @@ public class ModifyAttackActivity extends AppCompatActivity
             int attBasedOnPos = attackBasedOnAdapter.getPosition(stAttackBasedOn);
             attackBasedOnSpinner.setSelection(attBasedOnPos);
         }
+        
+        if (stExtraToHitChecked != null) {
+            int extraToHitChecked = Integer.parseInt(stExtraToHitChecked);
+            if(extraToHitChecked == 1)
+            {
+                extraToHitCheckbox.setChecked(true);
+                extraToHitSpinner.setVisibility(View.VISIBLE);
+                if (stExtraToHit != null) {
+                    int extraToHitPos = extraToHitAdapter.getPosition(stExtraToHit);
+                    extraToHitSpinner.setSelection(extraToHitPos);
+                }
+                
+            } else {
+                extraToHitCheckbox.setChecked(false);
+                extraToHitSpinner.setVisibility(View.GONE);
+                if (stExtraToHit != null) {
+                    int extraToHitPos = extraToHitAdapter.getPosition("None");
+                    extraToHitSpinner.setSelection(extraToHitPos);
+                }
+            }
+        }
+        
         if (stDamageBasedOn != null) {
             int damageBasedOnPos = damageBasedOnAdapter.getPosition(stDamageBasedOn);
             damageBasedOnSpinner.setSelection(damageBasedOnPos);
         }
+        
+        if (stExtraDamageChecked != null) {
+            int extraDamageChecked = Integer.parseInt(stExtraDamageChecked);
+            if(extraDamageChecked == 1)
+            {
+                extraDamageCheckbox.setChecked(true);
+                extraDamageSpinner.setVisibility(View.VISIBLE);
+                if (stExtraDamage != null) {
+                    int extraDamagePos = extraDamageAdapter.getPosition(stExtraDamage);
+                    extraDamageSpinner.setSelection(extraDamagePos);
+                }
+                
+            } else {
+                extraDamageCheckbox.setChecked(false);
+                extraDamageSpinner.setVisibility(View.GONE);
+                if (stExtraDamage != null) {
+                    int extraDamagePos = extraDamageAdapter.getPosition("None");
+                    extraDamageSpinner.setSelection(extraDamagePos);
+                }
+                
+            }
+        }
+        
+        
         if (stTWF != null) {
             int TWFPos = TWFAdapter.getPosition(stTWF);
             TWFSpinner.setSelection(TWFPos);
@@ -184,7 +251,50 @@ public class ModifyAttackActivity extends AppCompatActivity
         
         
     }
+    
+    public void onModifyAttackExtraCheckboxClicked(View view)
+    {
+        // Is the view now checked?
+        boolean checked = ((CheckBox) view).isChecked();
 
+        // Check which checkbox was clicked
+        switch (view.getId())
+        {
+            case R.id.modifyattackExtraToHitCheckBox:
+                if (checked)
+                {
+                    Spinner extraToHitSpinner = findViewById(R.id.modifyattackExtraToHitSpinner);
+                    extraToHitSpinner.setVisibility(View.VISIBLE);
+
+                }           
+                else
+                {
+                    Spinner extraToHitSpinner = findViewById(R.id.modifyattackExtraToHitSpinner);
+                    extraToHitSpinner.setVisibility(View.GONE);
+
+                }               
+                break;
+
+            case R.id.modifyattackExtraDamageCheckBox:
+                if (checked)
+                {
+                    Spinner extraDamageSpinner = findViewById(R.id.modifyattackExtraDamageSpinner);
+                    extraDamageSpinner.setVisibility(View.VISIBLE);
+
+                }           
+                else
+                {
+                    Spinner extraDamageSpinner = findViewById(R.id.modifyattackExtraDamageSpinner);
+                    extraDamageSpinner.setVisibility(View.GONE);
+
+                }               
+                break;
+        }
+
+    }
+
+    
+    
     public void onModifyAttackButtonClick(View view)
     {   
         EditText attackView = (EditText) findViewById(R.id.modifyattackName);
@@ -198,12 +308,18 @@ public class ModifyAttackActivity extends AppCompatActivity
             Spinner bonusDiceDamageSpinner = (Spinner) findViewById(R.id.modifyattackBonusDiceSpinner);                   
             Spinner bonusDiceDamageSpinner2 = (Spinner) findViewById(R.id.modifyattackBonusDiceSpinner2);                  
             Spinner attackBasedOnSpinner = (Spinner) findViewById(R.id.modifyattackAttackBasedOnSpinner);                 
+            Spinner extraToHitSpinner = (Spinner) findViewById(R.id.modifyattackExtraToHitSpinner);       
+            CheckBox extraToHitCheckbox = findViewById(R.id.modifyattackExtraToHitCheckBox);
             Spinner damageBasedOnSpinner = (Spinner) findViewById(R.id.modifyattackDamageBasedOnSpinner);                
+            Spinner extraDamageSpinner = (Spinner) findViewById(R.id.modifyattackExtraDamageSpinner);       
+            CheckBox extraDamageCheckbox = findViewById(R.id.modifyattackExtraDamageCheckBox);
             Spinner iterativeAttacksSpinner = (Spinner) findViewById(R.id.modifyattackIterativeAttacksSpinner);                   
             Spinner TWFSpinner = (Spinner) findViewById(R.id.modifyattackTWFSpinner);                   
             Spinner customAttackBonusSpinner = (Spinner) findViewById(R.id.modifyattackCustomAttackBonusSpinner);                   
             Spinner customDamageBonusSpinner = (Spinner) findViewById(R.id.modifyattackCustomDamageBonusSpinner);       
-
+            
+            
+            
             String name = new String(attackView.getText().toString());
             String baseDamage = new String(String.valueOf(baseDamageSpinner.getSelectedItem()));
             String weaponEnhancement = new String(String.valueOf(weaponEnhancementSpinner.getSelectedItem()));
@@ -211,7 +327,23 @@ public class ModifyAttackActivity extends AppCompatActivity
             String bonusDiceDamage = new String(String.valueOf(bonusDiceDamageSpinner.getSelectedItem()));
             String bonusDiceDamage2 = new String(String.valueOf(bonusDiceDamageSpinner2.getSelectedItem()));
             String attackBasedOn = new String(String.valueOf(attackBasedOnSpinner.getSelectedItem()));
+            int extraToHitChecked = 0;
+            String extraToHit = new String("None");
+            if(extraToHitCheckbox.isChecked())
+            {
+                extraToHitChecked = 1;
+                extraToHit = String.valueOf(extraToHitSpinner.getSelectedItem());
+                
+            }
             String damageBasedOn = new String(String.valueOf(damageBasedOnSpinner.getSelectedItem()));
+            int extraDamageChecked = 0;
+            String extraDamage = new String("None");
+            if(extraDamageCheckbox.isChecked())
+            {
+                extraDamageChecked = 1;
+                extraDamage = String.valueOf(extraDamageSpinner.getSelectedItem());
+
+            }
             String iterativeAttacks = new String(String.valueOf(iterativeAttacksSpinner.getSelectedItem()));
             String TWF = new String(String.valueOf(TWFSpinner.getSelectedItem()));
             String customAttackBonus = new String(String.valueOf(customAttackBonusSpinner.getSelectedItem()));
@@ -221,8 +353,9 @@ public class ModifyAttackActivity extends AppCompatActivity
 
             modifyAttack (this, name, modAttPos, baseDamage, weaponEnhancement,
                           critical, bonusDiceDamage,
-                          bonusDiceDamage2, attackBasedOn,
-                          damageBasedOn, iterativeAttacks,
+                          bonusDiceDamage2, attackBasedOn, extraToHitChecked,
+                          extraToHit, damageBasedOn, extraDamageChecked, 
+                          extraDamage, iterativeAttacks,
                           TWF, customAttackBonusInt,
                           customDamageBonusInt);  
 
@@ -299,7 +432,9 @@ public class ModifyAttackActivity extends AppCompatActivity
                               String newName, int pos, String baseDamage, String weaponEnhancement,
                               String critical, String bonusDiceDamage,
                               String bonusDiceDamage2, String attackBasedOn,
-                              String damageBasedOn, String iterativeAttacks,
+                              int extraToHitChecked, String extraToHit, 
+                              String damageBasedOn, int extraDamageChecked,
+                              String extraDamage, String iterativeAttacks,
                               String TWF, int customAttackBonusInt,
                               int customDamageBonusInt)                             
     {
@@ -354,7 +489,11 @@ public class ModifyAttackActivity extends AppCompatActivity
                                         
                                         
                                         eAttack.getElementsByTagName("attackbasedon").item(0).setTextContent(attackBasedOn);
+                                        eAttack.getElementsByTagName("extratohitchecked").item(0).setTextContent(Integer.toString(extraToHitChecked));
+                                        eAttack.getElementsByTagName("extratohit").item(0).setTextContent(extraToHit);
                                         eAttack.getElementsByTagName("damagebasedon").item(0).setTextContent(damageBasedOn);
+                                        eAttack.getElementsByTagName("extradamagechecked").item(0).setTextContent(Integer.toString(extraDamageChecked));
+                                        eAttack.getElementsByTagName("extradamage").item(0).setTextContent(extraDamage);
                                         eAttack.getElementsByTagName("iterativeattacks").item(0).setTextContent(iterativeAttacks);
                                         eAttack.getElementsByTagName("twf").item(0).setTextContent(TWF);
                                         eAttack.getElementsByTagName("customattackbonus").item(0).setTextContent(Integer.toString(customAttackBonusInt));
@@ -567,6 +706,12 @@ public class ModifyAttackActivity extends AppCompatActivity
                                         stTWF = eAttack.getElementsByTagName("twf").item(0).getTextContent();
                                         stCustomAttackBonus = eAttack.getElementsByTagName("customattackbonus").item(0).getTextContent();
                                         stCustomDamageBonus = eAttack.getElementsByTagName("customdamagebonus").item(0).getTextContent();
+                                        
+                                        stExtraToHitChecked = eAttack.getElementsByTagName("extratohitchecked").item(0).getTextContent();
+                                        stExtraToHit = eAttack.getElementsByTagName("extratohit").item(0).getTextContent();
+                                        stExtraDamageChecked = eAttack.getElementsByTagName("extradamagechecked").item(0).getTextContent();
+                                        stExtraDamage = eAttack.getElementsByTagName("extradamage").item(0).getTextContent();
+                                        
                                         
                                     }
                                 }

@@ -135,7 +135,10 @@ public class ChangeInfoActivity extends AppCompatActivity
              staticBuildChangeInfo.acMoreButton1, staticBuildChangeInfo.acMoreButton2, staticBuildChangeInfo.acMoreField1, staticBuildChangeInfo.acMoreField2);
 
              
-           
+            Intent resultIntent = new Intent();
+            resultIntent.putExtra("changedBuildName", name);
+            setResult(Activity.RESULT_OK, resultIntent);
+            
             finish();
             
         } else {

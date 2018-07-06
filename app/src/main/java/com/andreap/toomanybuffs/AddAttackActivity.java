@@ -83,12 +83,23 @@ public class AddAttackActivity extends AppCompatActivity
         attackBasedOnAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         attackBasedOnSpinner.setAdapter(attackBasedOnAdapter);
         
+        Spinner extraToHitSpinner = (Spinner) findViewById(R.id.addattackExtraToHitSpinner);       
+        ArrayAdapter<CharSequence> extraToHitAdapter = ArrayAdapter.createFromResource
+        (this, R.array.attacktype, android.R.layout.simple_spinner_item);
+        extraToHitAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        extraToHitSpinner.setAdapter(extraToHitAdapter);
         
         Spinner damageBasedOnSpinner = (Spinner) findViewById(R.id.addattackDamageBasedOnSpinner);       
         ArrayAdapter<CharSequence> damageBasedOnAdapter = ArrayAdapter.createFromResource
             (this, R.array.damagetype, android.R.layout.simple_spinner_item);
         damageBasedOnAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         damageBasedOnSpinner.setAdapter(damageBasedOnAdapter);
+        
+        Spinner extraDamageSpinner = (Spinner) findViewById(R.id.addattackExtraDamageSpinner);       
+        ArrayAdapter<CharSequence> extraDamageAdapter = ArrayAdapter.createFromResource
+        (this, R.array.damagetype, android.R.layout.simple_spinner_item);
+        extraDamageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        extraDamageSpinner.setAdapter(extraDamageAdapter);
         
         
         Spinner iterativeAttacksSpinner = (Spinner) findViewById(R.id.addattackIterativeAttacksSpinner);       
@@ -120,8 +131,52 @@ public class AddAttackActivity extends AppCompatActivity
         customDamageBonusSpinner.setAdapter(customDamageBonusAdapter);
         customDamageBonusSpinner.setSelection(15);
         
+        extraToHitSpinner.setVisibility(View.GONE);
+        extraDamageSpinner.setVisibility(View.GONE);
     }
 
+    
+    public void onAddAttackExtraCheckboxClicked(View view)
+    {
+        // Is the view now checked?
+        boolean checked = ((CheckBox) view).isChecked();
+
+        // Check which checkbox was clicked
+        switch (view.getId())
+        {
+            case R.id.addattackExtraToHitCheckBox:
+                if (checked)
+                {
+                    Spinner extraToHitSpinner = findViewById(R.id.addattackExtraToHitSpinner);
+                    extraToHitSpinner.setVisibility(View.VISIBLE);
+                    
+                }           
+                else
+                {
+                    Spinner extraToHitSpinner = findViewById(R.id.addattackExtraToHitSpinner);
+                    extraToHitSpinner.setVisibility(View.GONE);
+                    
+                }               
+                break;
+
+            case R.id.addattackExtraDamageCheckBox:
+                if (checked)
+                {
+                    Spinner extraDamageSpinner = findViewById(R.id.addattackExtraDamageSpinner);
+                    extraDamageSpinner.setVisibility(View.VISIBLE);
+
+                }           
+                else
+                {
+                    Spinner extraDamageSpinner = findViewById(R.id.addattackExtraDamageSpinner);
+                    extraDamageSpinner.setVisibility(View.GONE);
+
+                }               
+                break;
+        }
+    
+    }
+    
     public void onAddAttackButtonClick(View view)
     {   
         EditText attackView = (EditText) findViewById(R.id.addattackName);
@@ -140,7 +195,12 @@ public class AddAttackActivity extends AppCompatActivity
             Spinner TWFSpinner = (Spinner) findViewById(R.id.addattackTWFSpinner);                   
             Spinner customAttackBonusSpinner = (Spinner) findViewById(R.id.addattackCustomAttackBonusSpinner);                   
             Spinner customDamageBonusSpinner = (Spinner) findViewById(R.id.addattackCustomDamageBonusSpinner);       
-   
+            Spinner extraToHitSpinner = (Spinner) findViewById(R.id.addattackExtraToHitSpinner);
+            CheckBox extraToHitCheckBox = (CheckBox) findViewById(R.id.addattackExtraToHitCheckBox);
+            Spinner extraDamageSpinner = (Spinner) findViewById(R.id.addattackExtraDamageSpinner);
+            CheckBox extraDamageCheckBox = (CheckBox) findViewById(R.id.addattackExtraDamageCheckBox);
+            
+            
             String name = new String(attackView.getText().toString());
             name = name.trim();
             
@@ -157,14 +217,32 @@ public class AddAttackActivity extends AppCompatActivity
             String customDamageBonus = new String(String.valueOf(customDamageBonusSpinner.getSelectedItem()));
             int customAttackBonusInt = Integer.parseInt(customAttackBonus);
             int customDamageBonusInt = Integer.parseInt(customDamageBonus);
-                   
+            
+            int extraToHitChecked = 0;
+            int extraDamageChecked = 0;
+            String extraToHit = new String("None");
+            String extraDamage = new String("None");
+            
+            if(extraToHitCheckBox.isChecked())
+            {
+                extraToHitChecked = 1;
+                extraToHit = String.valueOf(extraToHitSpinner.getSelectedItem());
+            }
+            if(extraDamageCheckBox.isChecked())
+            {
+                extraDamageChecked = 1;
+                extraDamage = String.valueOf(extraDamageSpinner.getSelectedItem());
+            }
+            
+            
             addNewAttack (this, staticAddAttackBuildName,
                          name, baseDamage, weaponEnhancement,
                          critical, bonusDiceDamage,
                          bonusDiceDamage2, attackBasedOn,
                          damageBasedOn, iterativeAttacks,
                          TWF, customAttackBonusInt,
-                         customDamageBonusInt);  
+                         customDamageBonusInt, extraToHitChecked,
+                         extraToHit, extraDamageChecked, extraDamage);  
                          
             finish();            
             
@@ -204,7 +282,8 @@ public class AddAttackActivity extends AppCompatActivity
                               String bonusDiceDamage2, String attackBasedOn,
                               String damageBasedOn, String iterativeAttacks,
                               String TWF, int customAttackBonusInt,
-                              int customDamageBonusInt)                             
+                              int customDamageBonusInt, int extraToHitChecked,
+                              String extraToHit, int extraDamageChecked, String extraDamage)                             
     {
 
         try
@@ -265,6 +344,15 @@ public class AddAttackActivity extends AppCompatActivity
                     Element attackCustomDamageBonus = doc.createElement("customdamagebonus");
                     attackCustomDamageBonus.appendChild(doc.createTextNode(Integer.toString(customDamageBonusInt)));
 
+                    Element attackExtraToHitChecked = doc.createElement("extratohitchecked");
+                    attackExtraToHitChecked.appendChild(doc.createTextNode(Integer.toString(extraToHitChecked)));
+                    Element attackExtraToHit = doc.createElement("extratohit");
+                    attackExtraToHit.appendChild(doc.createTextNode(extraToHit));
+                    
+                    Element attackExtraDamageChecked = doc.createElement("extradamagechecked");
+                    attackExtraDamageChecked.appendChild(doc.createTextNode(Integer.toString(extraDamageChecked)));
+                    Element attackExtraDamage = doc.createElement("extradamage");
+                    attackExtraDamage.appendChild(doc.createTextNode(extraDamage));
 
                     newAttack.appendChild(attackName);
                     newAttack.appendChild(attackBaseDiceDamage);
@@ -278,7 +366,10 @@ public class AddAttackActivity extends AppCompatActivity
                     newAttack.appendChild(attackTWF);
                     newAttack.appendChild(attackCustomAttackBonus);
                     newAttack.appendChild(attackCustomDamageBonus);
-
+                    newAttack.appendChild(attackExtraToHitChecked);
+                    newAttack.appendChild(attackExtraToHit);
+                    newAttack.appendChild(attackExtraDamageChecked);
+                    newAttack.appendChild(attackExtraDamage);
 
                     // write the content into xml file
                     TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -344,7 +435,17 @@ public class AddAttackActivity extends AppCompatActivity
                                 attackCustomAttackBonus.appendChild(doc.createTextNode(Integer.toString(customAttackBonusInt)));
                                 Element attackCustomDamageBonus = doc.createElement("customdamagebonus");
                                 attackCustomDamageBonus.appendChild(doc.createTextNode(Integer.toString(customDamageBonusInt)));
+                                
+                                Element attackExtraToHitChecked = doc.createElement("extratohitchecked");
+                                attackExtraToHitChecked.appendChild(doc.createTextNode(Integer.toString(extraToHitChecked)));
+                                Element attackExtraToHit = doc.createElement("extratohit");
+                                attackExtraToHit.appendChild(doc.createTextNode(extraToHit));
 
+                                Element attackExtraDamageChecked = doc.createElement("extradamagechecked");
+                                attackExtraDamageChecked.appendChild(doc.createTextNode(Integer.toString(extraDamageChecked)));
+                                Element attackExtraDamage = doc.createElement("extradamage");
+                                attackExtraDamage.appendChild(doc.createTextNode(extraDamage));
+                                
 
                                 newAttack.appendChild(attackName);
                                 newAttack.appendChild(attackBaseDiceDamage);
@@ -358,7 +459,10 @@ public class AddAttackActivity extends AppCompatActivity
                                 newAttack.appendChild(attackTWF);
                                 newAttack.appendChild(attackCustomAttackBonus);
                                 newAttack.appendChild(attackCustomDamageBonus);
-
+                                newAttack.appendChild(attackExtraToHitChecked);
+                                newAttack.appendChild(attackExtraToHit);
+                                newAttack.appendChild(attackExtraDamageChecked);
+                                newAttack.appendChild(attackExtraDamage);
 
                                 // write the content into xml file
                                 TransformerFactory transformerFactory = TransformerFactory.newInstance();
@@ -418,6 +522,16 @@ public class AddAttackActivity extends AppCompatActivity
                         Element attackCustomDamageBonus = doc.createElement("customdamagebonus");
                         attackCustomDamageBonus.appendChild(doc.createTextNode(Integer.toString(customDamageBonusInt)));
 
+                        Element attackExtraToHitChecked = doc.createElement("extratohitchecked");
+                        attackExtraToHitChecked.appendChild(doc.createTextNode(Integer.toString(extraToHitChecked)));
+                        Element attackExtraToHit = doc.createElement("extratohit");
+                        attackExtraToHit.appendChild(doc.createTextNode(extraToHit));
+
+                        Element attackExtraDamageChecked = doc.createElement("extradamagechecked");
+                        attackExtraDamageChecked.appendChild(doc.createTextNode(Integer.toString(extraDamageChecked)));
+                        Element attackExtraDamage = doc.createElement("extradamage");
+                        attackExtraDamage.appendChild(doc.createTextNode(extraDamage));
+                        
 
                         newAttack.appendChild(attackName);
                         newAttack.appendChild(attackBaseDiceDamage);
@@ -432,7 +546,11 @@ public class AddAttackActivity extends AppCompatActivity
                         newAttack.appendChild(attackCustomAttackBonus);
                         newAttack.appendChild(attackCustomDamageBonus);
 
-
+                        newAttack.appendChild(attackExtraToHitChecked);
+                        newAttack.appendChild(attackExtraToHit);
+                        newAttack.appendChild(attackExtraDamageChecked);
+                        newAttack.appendChild(attackExtraDamage);
+                        
                         // write the content into xml file
                         TransformerFactory transformerFactory = TransformerFactory.newInstance();
                         Transformer transformer = transformerFactory.newTransformer();
@@ -499,6 +617,15 @@ public class AddAttackActivity extends AppCompatActivity
                 attackCustomAttackBonus.appendChild(doc.createTextNode(Integer.toString(customAttackBonusInt)));
                 Element attackCustomDamageBonus = doc.createElement("customdamagebonus");
                 attackCustomDamageBonus.appendChild(doc.createTextNode(Integer.toString(customDamageBonusInt)));
+                Element attackExtraToHitChecked = doc.createElement("extratohitchecked");
+                attackExtraToHitChecked.appendChild(doc.createTextNode(Integer.toString(extraToHitChecked)));
+                Element attackExtraToHit = doc.createElement("extratohit");
+                attackExtraToHit.appendChild(doc.createTextNode(extraToHit));
+
+                Element attackExtraDamageChecked = doc.createElement("extradamagechecked");
+                attackExtraDamageChecked.appendChild(doc.createTextNode(Integer.toString(extraDamageChecked)));
+                Element attackExtraDamage = doc.createElement("extradamage");
+                attackExtraDamage.appendChild(doc.createTextNode(extraDamage));
                 
                 
                 newAttack.appendChild(attackName);
@@ -513,6 +640,10 @@ public class AddAttackActivity extends AppCompatActivity
                 newAttack.appendChild(attackTWF);
                 newAttack.appendChild(attackCustomAttackBonus);
                 newAttack.appendChild(attackCustomDamageBonus);
+                newAttack.appendChild(attackExtraToHitChecked);
+                newAttack.appendChild(attackExtraToHit);
+                newAttack.appendChild(attackExtraDamageChecked);
+                newAttack.appendChild(attackExtraDamage);
                 
 
                 // write the content into xml file

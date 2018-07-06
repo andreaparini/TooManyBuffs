@@ -324,6 +324,43 @@ public class CombatActivity extends AppCompatActivity
                             staticBuild.getChaModifier();
                 }
 
+                if(savedAttacks.get(j-1).extraToHitChecked == 1)
+                {
+                    if ((savedAttacks.get(j - 1).extraToHit).equals("Strength"))
+                    {
+                        numericToHit += 
+                            staticBuild.getStrModifier();
+                    }
+                    else if ((savedAttacks.get(j - 1).extraToHit).equals("Dexterity"))
+                    {
+                        numericToHit +=
+                            staticBuild.getDexModifier();
+                    }
+                    else if ((savedAttacks.get(j - 1).extraToHit).equals("Constitution"))
+                    {
+                        numericToHit +=
+                            staticBuild.getConModifier();
+                    }
+                    else if ((savedAttacks.get(j - 1).extraToHit).equals("Intelligence"))
+                    {
+                        numericToHit +=
+                            staticBuild.getIntlModifier();
+                    }
+                    else if ((savedAttacks.get(j - 1).extraToHit).equals("Wisdom"))
+                    {
+                        numericToHit +=
+                            staticBuild.getWisModifier();
+                    }
+                    else if ((savedAttacks.get(j - 1).extraToHit).equals("Charisma"))
+                    {
+                        numericToHit +=
+                            staticBuild.getChaModifier();
+                    }
+                }
+                
+                
+                
+                
                 if((savedAttacks.get(j-1).TWF)
                         .equals("Main Hand: normal penalties (-6)"))
                 {
@@ -650,6 +687,73 @@ public class CombatActivity extends AppCompatActivity
                             staticBuild.getChaModifier();
                 }
 
+                
+                
+                
+                if (savedAttacks.get(j - 1).extraDamageChecked == 1)
+                {
+
+
+                    if ((savedAttacks.get(j - 1).extraDamage).equals("0.5x Strength"))
+                    {
+                        numericBonusDamage += 
+                            staticBuild.getStrModifier() / 2;
+                    }
+                    else if ((savedAttacks.get(j - 1).extraDamage).equals("Strength"))
+                    {
+                        numericBonusDamage +=
+                            staticBuild.getStrModifier();
+                    }
+                    else if ((savedAttacks.get(j - 1).extraDamage).equals("1.5x Strength"))
+                    {
+                        numericBonusDamage +=
+                            staticBuild.getStrModifier() + staticBuild.getStrModifier() / 2;
+                    }
+                    else if ((savedAttacks.get(j - 1).extraDamage).equals("2x Strength"))
+                    {
+                        numericBonusDamage +=
+                            2 * staticBuild.getStrModifier();
+                    }
+                    else if ((savedAttacks.get(j - 1).extraDamage).equals("0.5x Dexterity"))
+                    {
+                        numericBonusDamage += 
+                            staticBuild.getDexModifier() / 2;
+                    }
+                    else if ((savedAttacks.get(j - 1).extraDamage).equals("Dexterity"))
+                    {
+                        numericBonusDamage +=
+                            staticBuild.getDexModifier();
+                    }
+                    else if ((savedAttacks.get(j - 1).extraDamage).equals("1.5x Dexterity"))
+                    {
+                        numericBonusDamage +=
+                            staticBuild.getDexModifier() + staticBuild.getDexModifier() / 2;
+                    }
+                    else if ((savedAttacks.get(j - 1).extraDamage).equals("Constitution"))
+                    {
+                        numericBonusDamage +=
+                            staticBuild.getConModifier();
+                    }
+                    else if ((savedAttacks.get(j - 1).extraDamage).equals("Intelligence"))
+                    {
+                        numericBonusDamage +=
+                            staticBuild.getIntlModifier();
+                    }
+                    else if ((savedAttacks.get(j - 1).extraDamage).equals("Wisdom"))
+                    {
+                        numericBonusDamage +=
+                            staticBuild.getWisModifier();
+                    }
+                    else if ((savedAttacks.get(j - 1).extraDamage).equals("Charisma"))
+                    {
+                        numericBonusDamage +=
+                            staticBuild.getChaModifier();
+                    }
+
+                }
+                
+                
+                
                 if(!(savedAttacks.get(j-1).weaponEnhancement)
                    .equals("Masterwork"))
                 {
@@ -760,7 +864,11 @@ public class CombatActivity extends AppCompatActivity
                                     String name = eAttack.getElementsByTagName("name").item(0).getTextContent();
                                     String weaponEnhancement = eAttack.getElementsByTagName("weaponenhancement").item(0).getTextContent();
                                     String attackBasedOn = eAttack.getElementsByTagName("attackbasedon").item(0).getTextContent();
+                                    int extraToHitChecked = Integer.parseInt(eAttack.getElementsByTagName("extratohitchecked").item(0).getTextContent());
+                                    String extraToHit = eAttack.getElementsByTagName("extratohit").item(0).getTextContent();
                                     String damageBasedOn = eAttack.getElementsByTagName("damagebasedon").item(0).getTextContent();
+                                    int extraDamageChecked = Integer.parseInt(eAttack.getElementsByTagName("extradamagechecked").item(0).getTextContent());
+                                    String extraDamage = eAttack.getElementsByTagName("extradamage").item(0).getTextContent();
                                     String critical = eAttack.getElementsByTagName("critical").item(0).getTextContent();
                                     String baseDamage = eAttack.getElementsByTagName("basedicedamage").item(0).getTextContent();
                                     String bonusDiceDamage = eAttack.getElementsByTagName("bonusdicedamage").item(0).getTextContent();
@@ -773,7 +881,8 @@ public class CombatActivity extends AppCompatActivity
                                     
                                     dbAttacks.add(new AttackInfo
                                                  (name, baseDamage, weaponEnhancement, bonusDiceDamage, 
-                                                  bonusDiceDamage2, attackBasedOn, damageBasedOn, 
+                                                  bonusDiceDamage2, attackBasedOn, extraToHitChecked,
+                                                  extraToHit, damageBasedOn, extraDamageChecked, extraDamage,
                                                   iterativeAttacks, critical, 
                                                   TWF, customAttackBonus,
                                                   customDamageBonus, nAttacks.getLength()));

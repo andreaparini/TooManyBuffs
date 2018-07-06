@@ -15,12 +15,15 @@ import android.widget.AdapterView.*;
 import android.content.*;
 import android.support.v7.app.*;
 import android.support.v7.widget.Toolbar;
+import android.app.*;
 
 public class CustomizationActivity extends AppCompatActivity
 {
     static String staticBuildName = new String("");
     Build useless = new Build();
     static Build staticBuild;
+
+    static final int STATIC_INTEGER_VALUE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -518,7 +521,7 @@ public class CustomizationActivity extends AppCompatActivity
         acMoreField2.setAdapter(customAcMoreAdapter);  
 
 
-        buildToSpinner();
+        
     
     }
 
@@ -527,14 +530,8 @@ public class CustomizationActivity extends AppCompatActivity
     {
         super.onResume();
         staticBuild = useless.readBuildXmlFile(this, staticBuildName);
-        if (!staticBuild.name.equals(staticBuildName))
-        {
-            Toast.makeText(this, 
-                           "Build has changed name, please reload it", 
-                           Toast.LENGTH_LONG).show();
-            finish();
-        }
-
+            
+        buildToSpinner();
     }
     
     
@@ -589,6 +586,8 @@ public class CustomizationActivity extends AppCompatActivity
                 }              
                 break;
         }
+        
+        
     }
     
 
@@ -647,8 +646,9 @@ public class CustomizationActivity extends AppCompatActivity
 
                 Intent intent = new Intent(this, ChangeInfoActivity.class);
                 intent.putExtra("oldBuildName", staticBuildName);
-                startActivity(intent);
-
+                               
+                startActivityForResult(intent, STATIC_INTEGER_VALUE);
+                                         
                 return true;
 
 
@@ -668,7 +668,23 @@ public class CustomizationActivity extends AppCompatActivity
         }
         return super.onOptionsItemSelected(item);
     }
-
+    
+    @Override 
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {     
+        super.onActivityResult(requestCode, resultCode, data); 
+        switch(requestCode) { 
+            case (STATIC_INTEGER_VALUE) : { 
+                    if (resultCode == Activity.RESULT_OK) { 
+                        staticBuildName = data.getStringExtra("changedBuildName");
+                        
+                    } 
+                    break; 
+                } 
+        } 
+    } 
+    
+    
+    
     public void spinnertoBuild()
     {
         // strength

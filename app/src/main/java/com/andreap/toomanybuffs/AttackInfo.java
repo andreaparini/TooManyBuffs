@@ -15,6 +15,10 @@ public class AttackInfo
     public int customAttackBonus;
     public int customDamageBonus;
     public int nattacks;
+    public int extraToHitChecked;
+    public String extraToHit;
+    public int extraDamageChecked;
+    public String extraDamage;
 
     AttackInfo(String name, String attackBasedOn,
                String damageBasedOn, String critical, int nattacks)
@@ -28,7 +32,8 @@ public class AttackInfo
     
     AttackInfo(String name, String baseDamage, String weaponEnhancement,
                String bonusDiceDamage, String bonusDiceDamage2,
-               String attackBasedOn, String damageBasedOn, 
+               String attackBasedOn, int extraToHitChecked, String extraToHit,
+               String damageBasedOn, int extraDamageChecked, String extraDamage,
                String iterativeAttacks, String critical, 
                String TWF, int customAttackBonus,
                int customDamageBonus, int nattacks)
@@ -46,5 +51,9 @@ public class AttackInfo
         this.customAttackBonus = customAttackBonus;
         this.customDamageBonus = customDamageBonus;
         this.nattacks = nattacks;
+        this.extraToHitChecked = extraToHitChecked;
+        this.extraToHit = extraToHit;
+        this.extraDamageChecked = extraDamageChecked;
+        this.extraDamage = extraDamage;
     }
 }
