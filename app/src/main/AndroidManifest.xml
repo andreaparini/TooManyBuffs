@@ -81,8 +81,14 @@
         
         <!-- -->
         <activity
-            android:name=".ManageBuffsActivity"
+            android:name=".BuffsActivity"
             android:label="Add/Manage Buffs">
+        </activity>
+        
+        <!-- -->
+        <activity
+            android:name=".NewBuffActivity"
+            android:label="New Buff">
         </activity>
         
         

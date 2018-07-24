@@ -42,6 +42,9 @@
         <item>4d6</item>
         <item>5d6</item>
         <item>6d6</item>
+        <item>7d6</item>
+        <item>8d6</item>
+        <item>9d6</item>
     </string-array>
     
     <string-array name="critical">
@@ -190,6 +193,58 @@
         <item>Intelligence</item>
         <item>Wisdom</item>
         <item>Charisma</item>
+    </string-array>
+    
+    <string-array name="bufftype">
+        <item>Strength</item>
+        <item>Dexterity</item>
+        <item>Constitution</item>
+        <item>Intelligence</item>
+        <item>Wisdom</item>
+        <item>Charisma</item>
+        <item>To Hit</item>
+        <item>Damage</item>
+        <item>AC</item>
+    </string-array>
+    
+    <string-array name="strdexconbuffs">
+        <item>Enhancement</item>
+        <item>Morale</item>
+        <item>Size</item>
+        <item>Alchemical</item>
+        <item>Inherent</item>
+        <item>Other</item>
+    </string-array>
+    
+    <string-array name="intwischabuffs">
+        <item>Enhancement</item>
+        <item>Morale</item>
+        <item>Alchemical</item>
+        <item>Inherent</item>
+        <item>Other</item>
+    </string-array>
+    
+    <string-array name="tohitdmgbuffs">
+        <item>Enhancement</item>
+        <item>Morale</item>
+        <item>Luck</item>
+        <item>Size</item>
+        <item>Sacred</item>
+        <item>Untyped</item>
+        <item>Other</item>
+    </string-array>
+    
+    <string-array name="acbuffs">
+        <item>Armor</item>
+        <item>Natural Armor</item>
+        <item>Natural Arm. Enh.</item>
+        <item>Sacred</item>
+        <item>Shield</item>
+        <item>Deflection</item>
+        <item>Insight</item>
+        <item>Size</item>
+        <item>Untyped</item>
+        <item>Other</item>
     </string-array>
     
 </resources>

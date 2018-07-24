@@ -443,7 +443,7 @@ public class NewBuildActivity extends AppCompatActivity
                 // root elements
                 Document doc = docBuilder.newDocument();
                 
-                Element rootElement = doc.createElement("database");
+                Element rootElement = doc.createElement("buildsdatabase");
                 doc.appendChild(rootElement);
 
                 

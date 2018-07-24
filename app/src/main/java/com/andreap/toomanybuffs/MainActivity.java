@@ -52,9 +52,9 @@ public class MainActivity extends AppCompatActivity
         Intent intent = new Intent(this, LoadBuildsActivity.class);
         startActivity(intent);
     }
-    public void onManageBuffsButtonClick(View view)
+    public void onAddManageBuffsButtonClick(View view)
     {
-        Intent intent = new Intent(this, ManageBuffsActivity.class);
+        Intent intent = new Intent(this, BuffsActivity.class);
         startActivity(intent);
     }
     

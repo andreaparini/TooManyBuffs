@@ -1,17 +1,32 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".CustomizationActivity">
     
     <item
         android:title="Get combat stats"
-        android:id="@+id/custMenuGetStats"/>
+        android:id="@+id/custMenuGetStats"
+        android:orderInCategory="100"
+        android:icon="@drawable/ic_gavel_white_24dp"
+        app:showAsAction="always"/>
     <item
         android:title="Set attacks"
-        android:id="@+id/custMenuSetAttacks"/>
+        android:id="@+id/custMenuSetAttacks"
+        android:orderInCategory="200"
+        android:icon="@drawable/ic_sword26"
+        app:showAsAction="always"/>
      <item       
         android:title="Save customization as default"
-        android:id="@+id/custMenuSaveAsDefault"/>
+        android:id="@+id/custMenuSaveAsDefault"
+        android:orderInCategory="300"
+        android:icon="@drawable/ic_archive_white_24dp"
+        app:showAsAction="ifRoom"/>
     <item
         android:title="Restore default customization"
-        android:id="@+id/custMenuRestoreDefaults"/>
+        android:id="@+id/custMenuRestoreDefaults"
+        android:orderInCategory="400"
+        android:icon="@drawable/ic_unarchive_white_24dp"
+        app:showAsAction="ifRoom"/>
     <item
         android:title="Change base build info"
         android:id="@+id/custMenuChangeInfo"/>

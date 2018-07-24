@@ -12,7 +12,7 @@ import android.widget.*;
 import android.graphics.*;
 
 /**
- * Created by Abhi on 23 Sep 2017 023.
+ * Adapter for Recyclerview
  */
 
 public class AttacksAdapter extends RecyclerView.Adapter<AttacksAdapter.CustomViewHolder> {

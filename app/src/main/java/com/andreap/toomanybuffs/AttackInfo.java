@@ -1,5 +1,7 @@
 package com.andreap.toomanybuffs;
 
+
+//helper class to store attack information.
 public class AttackInfo
 {
     public String name;                //ok

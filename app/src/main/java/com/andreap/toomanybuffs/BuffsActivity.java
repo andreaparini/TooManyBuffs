@@ -8,13 +8,13 @@ import android.content.*;
 import android.support.v7.app.*;
 import android.support.v7.widget.Toolbar;
 
-public class ManageBuffsActivity extends AppCompatActivity
+public class BuffsActivity extends AppCompatActivity
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.managebuffs);
+        setContentView(R.layout.buffs);
         Toolbar main_toolbar = (Toolbar) findViewById(R.id.mainToolbar);
         setSupportActionBar(main_toolbar);
     }
@@ -27,6 +27,20 @@ public class ManageBuffsActivity extends AppCompatActivity
         return true;
     }
 
-    
+    public void onNewBuffButtonClick(View view)
+    {
+        Intent intent = new Intent(this, NewBuffActivity.class);
+        startActivity(intent);
+    }
+    public void onManageBuffsButtonClick(View view)
+    {
+        Intent intent = new Intent(this, LoadBuildsActivity.class);
+        startActivity(intent);
+    }
+    public void onManageFavoritesButtonClick(View view)
+    {
+        Intent intent = new Intent(this, BuffsActivity.class);
+        startActivity(intent);
+    }
     
 }

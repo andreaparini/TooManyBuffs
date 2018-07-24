@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
 	xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:orientation="vertical"
-	android:fitsSystemWindows="true">
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical">
 
 	<include
 		android:id="@+id/mainToolbar"
@@ -20,28 +19,29 @@
 		<Button
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:id="@+id/mainNewBuildButton"
-			android:text="New Build"
+			android:id="@+id/buffsNewBuffButton"
+			android:text="New Buff"
 			style="?android:attr/buttonBarButtonStyle"
 			android:padding="25dp"
-			android:onClick="onNewBuildButtonClick"/>
+			android:onClick="onNewBuffButtonClick"/>
 
 		<Button
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="Load/Manage Builds"
-			android:id="@+id/mainLoadBuildButton"
+			android:text="Manage Buffs"
+			android:id="@+id/buffsManageButton"
 			android:padding="25dp"
 			style="?android:attr/buttonBarButtonStyle"
-			android:onClick="onLoadBuildsButtonClick"/>
+			android:onClick="onManageBuffsButtonClick"/>
 
 		<Button
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
-			android:text="Manage/Add Buffs"
+			android:text="Manage Favorites"
 			android:padding="25dp"
 			style="?android:attr/buttonBarButtonStyle"
-            android:onClick="onAddManageBuffsButtonClick"/>
+			android:onClick="onManageFavoritesButtonClick"
+			android:id="@+id/buffsManageFavoritesButton"/>
 
 	</LinearLayout>
 
